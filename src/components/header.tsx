@@ -1,12 +1,12 @@
-import { cn } from "@/utils";
-import Image from "next/image";
-import { ReactNode, Fragment } from "react";
+import facebook from "@/assets/icons/Facebook.svg";
+import ig from "@/assets/icons/ig.svg";
+import line from "@/assets/icons/line.svg";
+import youtube from "@/assets/icons/youtube.svg";
 import logo from "@/assets/logo.svg";
 import star from "@/assets/star.svg";
-import line from "@/assets/icons/line.svg";
-import ig from "@/assets/icons/ig.svg";
-import facebook from "@/assets/icons/Facebook.svg";
-import youtube from "@/assets/icons/youtube.svg";
+import { cn } from "@/utils";
+import Image from "next/image";
+import { Fragment } from "react";
 
 import Link from "next/link";
 
@@ -61,15 +61,18 @@ const socialMedia = [
 
 export default function Header() {
   return (
-    <nav className="h-16 bg-green-light relative isolate">
-      <SerratedRectangle dark className="z-10 relative" />
+    <nav className="relative isolate z-10 h-16 bg-green-light">
+      <SerratedRectangle dark className="relative z-10" />
       {/* 54 === height of nav - height of above SerratedRectangle */}
-      <div className="flex relative z-0 items-start h-[54px]">
-        <Navigation links={leftSideLinks} className="pr-12 justify-end" />
-        <Image src={logo} alt="" className="-translate-y-2.5" />
+      <div className="relative z-0 flex h-[54px] items-start">
+        <Navigation links={leftSideLinks} className="justify-end pr-12" />
+        {/* huge center LOGO */}
+        <Link href="/">
+          <Image src={logo} alt="" className="-translate-y-2.5" />
+        </Link>
         <Navigation links={rightSideLinks} className="pl-12" />
 
-        <div className="flex absolute gap-6 right-10 top-1/2 -translate-y-1/2">
+        <div className="absolute right-10 top-1/2 flex -translate-y-1/2 gap-6">
           {socialMedia.map((socialMedia, idx) => (
             <a key={idx} href={socialMedia.path} target="_blank">
               <Image alt="" src={socialMedia.icon} />
@@ -79,7 +82,7 @@ export default function Header() {
       </div>
       <SerratedRectangle
         dark={false}
-        className="absolute bottom-0 translate-y-1/2 w-full -z-10"
+        className="absolute bottom-0 -z-10 w-full translate-y-1/2"
       />
     </nav>
   );
@@ -105,7 +108,7 @@ function SerratedRectangle({
       <div
         className={cn("h-[5px] w-full", dark ? "bg-green" : "bg-green-light")}
       />
-      <div className="w-fit flex justify-self-center">
+      <div className="flex w-fit justify-self-center">
         {[...Array(numberOfTriangles.default)].map((_, idx) => (
           <UpsideDownTriangle key={idx} dark={dark} />
         ))}
@@ -136,13 +139,13 @@ function UpsideDownTriangle({
   return (
     <div
       className={cn(
-        "w-0 h-0 border-b-[5px] hidden  border-x-8 border-x-transparent rotate-180",
+        "hidden h-0 w-0 rotate-180  border-x-8 border-b-[5px] border-x-transparent",
         size === "default" && "block xl:hidden",
         size === "xl" && "xl:block lg:hidden",
         size === "lg" && "lg:block md:hidden",
         size === "md" && "md:block sm:hidden",
         size === "sm" && "sm:block",
-        dark ? "border-b-green" : "border-b-green-light"
+        dark ? "border-b-green" : "border-b-green-light",
       )}
     />
   );
@@ -156,7 +159,7 @@ function Navigation({
   className?: string;
 }) {
   return (
-    <nav className={cn("flex flex-1 basis-0 h-full items-center", className)}>
+    <nav className={cn("flex h-full flex-1 basis-0 items-center", className)}>
       {links.map((link) => (
         <Fragment key={link.path}>
           <Link href={link.path} className="text-lg font-bold text-green">

@@ -11,6 +11,7 @@ const config: Config = {
       colors: {
         green: "#3A9EA5",
         "green-light": "#D9EEEC",
+        orange: "#DE754F",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -35,6 +36,6 @@ const config: Config = {
       // => @media (max-width: 639px) { ... }
     },
   },
-  plugins: [],
+  plugins: [require("tailwind-scrollbar")],
 };
 export default config;

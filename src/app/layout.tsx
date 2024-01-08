@@ -3,8 +3,10 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
 import Image from "next/image";
+// import bg from "@/assets/bg-hd.png";
 import bg from "@/assets/bg.jpg";
 import { cn } from "@/utils";
+import Footer from "@/components/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,12 +22,21 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={cn("h-screen relative", inter.className)}>
-        <div className="fixed inset-0">
+      <body
+        className={cn(
+          "relative flex h-screen flex-col overflow-hidden",
+          inter.className,
+        )}
+      >
+        {/* background image */}
+        <div className="fixed inset-0 -z-20">
           <Image alt="" src={bg} className="object-cover object-bottom" fill />
         </div>
         <Header />
-        {children}
+        <main className="absolute mt-44 h-[calc(100%-176px)]  px-36">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );
