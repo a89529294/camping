@@ -72,7 +72,8 @@ export default function Header() {
         </Link>
         <Navigation links={rightSideLinks} className="pl-12" />
 
-        <div className="absolute right-10 top-1/2 flex -translate-y-1/2 gap-6">
+        {/* social medias */}
+        <div className="absolute right-10 top-1/2 flex -translate-y-1/2 gap-6 xl:gap-4 lg:gap-3">
           {socialMedia.map((socialMedia, idx) => (
             <a key={idx} href={socialMedia.path} target="_blank">
               <Image alt="" src={socialMedia.icon} />
@@ -165,8 +166,8 @@ function Navigation({
           <Link href={link.path} className="text-green-200 text-lg font-bold">
             {link.label}
           </Link>
-          <div className="px-5 last:hidden">
-            <Image alt="" src={star} />
+          <div className="px-5 last:hidden xl:px-2 lg:px-1">
+            <Image alt="" src={star} className="lg:hidden" />
           </div>
         </Fragment>
       ))}

@@ -1,22 +1,12 @@
 "use client";
 
-import img1 from "@/assets/temp/1.jpg";
-import img2 from "@/assets/temp/2.jpg";
-import img3 from "@/assets/temp/3.jpg";
-import img4 from "@/assets/temp/4.jpg";
-import img5 from "@/assets/temp/5.jpg";
-import img6 from "@/assets/temp/6.jpg";
-import img7 from "@/assets/temp/7.jpg";
-import img8 from "@/assets/temp/8.jpg";
-import greenArrowLeft from "@/assets/icons/green-arrow-left.svg";
-import greenArrowRight from "@/assets/icons/green-arrow-right.svg";
-import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { ChevronButton } from "@/components/chevron-button";
+import Image, { StaticImageData } from "next/image";
+import { useRef, useState } from "react";
 
-// 144 === 36rem === width of carousel items
+const itemWidth = 144; // 144 === 36rem === width of carousel items
 
-const images = [img1, img2, img3, img4, img5, img6, img7, img8];
-export function NewsDetailsCarousel() {
+export function NewsDetailsCarousel({ images }: { images: StaticImageData[] }) {
   const [startX, setStartX] = useState<number | undefined>(undefined);
   const [mainImgIdx, setMainImgIdx] = useState(0);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -26,27 +16,57 @@ export function NewsDetailsCarousel() {
     if (mainImgIdx <= 0 || !scrollContainer) return;
     setMainImgIdx((idx) => --idx);
 
-    const containerScrollLeft = scrollContainerRef.current.scrollLeft;
+    const containerScrollLeft = scrollContainer.scrollLeft;
     const selectedCarouselItemOffsetLeft = (
-      scrollContainerRef.current?.querySelector(
+      scrollContainer.querySelector(
         `[data-idx='${mainImgIdx - 1}']`,
       ) as HTMLDivElement
     ).offsetLeft;
 
-    if (selectedCarouselItemOffsetLeft < containerScrollLeft)
+    if (
+      selectedCarouselItemOffsetLeft < containerScrollLeft ||
+      selectedCarouselItemOffsetLeft >
+        containerScrollLeft + scrollContainer.clientWidth - itemWidth
+    )
+      scrollContainer.scrollLeft = selectedCarouselItemOffsetLeft;
+  };
+  const onRightArrowClick = () => {
+    const scrollContainer = scrollContainerRef.current;
+    if (mainImgIdx >= images.length - 1 || !scrollContainer) return;
+    setMainImgIdx((idx) => ++idx);
+
+    const containerScrollLeft = scrollContainer.scrollLeft;
+    const selectedCarouselItemOffsetLeft = (
+      scrollContainer.querySelector(
+        `[data-idx='${mainImgIdx + 1}']`,
+      ) as HTMLDivElement
+    ).offsetLeft;
+
+    if (
+      selectedCarouselItemOffsetLeft < containerScrollLeft ||
+      selectedCarouselItemOffsetLeft >
+        containerScrollLeft + scrollContainer.clientWidth - itemWidth
+    )
       scrollContainer.scrollLeft = selectedCarouselItemOffsetLeft;
   };
 
   return (
     <div className="space-y-2.5">
       <div className="relative aspect-[3/2] w-full ">
-        <button
+        <ChevronButton
+          dir="left"
           onClick={onLeftArrowClick}
-          className="border-green-200 absolute -left-4 top-1/2 grid h-7 w-7 -translate-x-full place-items-center border-[1.5px] bg-white"
-        >
-          <Image alt="" src={greenArrowLeft} />
-        </button>
+          className="absolute -left-4 top-1/2 -translate-x-full"
+          disabled={mainImgIdx === 0}
+        />
         <Image fill alt="" src={images[mainImgIdx]} className="object-cover" />
+
+        <ChevronButton
+          dir="right"
+          onClick={onRightArrowClick}
+          disabled={mainImgIdx === images.length - 1}
+          className="absolute -right-4 top-1/2 translate-x-full"
+        />
       </div>
       <div
         ref={scrollContainerRef}
@@ -61,10 +81,10 @@ export function NewsDetailsCarousel() {
               setMainImgIdx(+(e.target.dataset.idx ?? 0));
           } else if (e.screenX < startX)
             scrollContainer.scrollLeft +=
-              144 * (Math.floor((startX - e.screenX) / 144) + 1);
+              itemWidth * (Math.floor((startX - e.screenX) / itemWidth) + 1);
           else
             scrollContainer.scrollLeft -=
-              144 * (Math.floor((e.screenX - startX) / 144) + 1);
+              itemWidth * (Math.floor((e.screenX - startX) / itemWidth) + 1);
           setStartX(undefined);
         }}
       >

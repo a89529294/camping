@@ -3,17 +3,18 @@ import imagePlaceholder from "@/assets/image-placeholder.svg";
 import greenArrowRight from "@/assets/icons/green-arrow-right.svg";
 import Link from "next/link";
 import { PlaceholderImage } from "@/components/placeholder-image";
+import { newsList } from "@/app/news/temp-data";
 
 export default function NewsPage() {
   return (
-    <div className="absolute inset-x-16 grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-7 pt-2.5">
-      {[...Array(13)].map((_, idx) => (
-        <div key={idx} className="">
+    <div className="mx-16 grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-7 pt-2.5">
+      {newsList.map((news) => (
+        <div key={news.id} className="">
           <PlaceholderImage />
           <div className="bg-slate-100 px-6 py-4">
             <div className="text-green-100 font-medium">2023-01-01</div>
             <div className="truncate text-lg font-bold text-orange">
-              標題標題標題標題標題標題標題標題標題標題
+              {news.title}
             </div>
             <div className="mt-2 flex justify-end">
               <Link
