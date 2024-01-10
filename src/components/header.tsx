@@ -61,7 +61,7 @@ const socialMedia = [
 
 export default function Header() {
   return (
-    <nav className="relative isolate z-10 h-16 bg-green-light">
+    <nav className="bg-green-800 relative z-10 h-16 ">
       <SerratedRectangle dark className="relative z-10" />
       {/* 54 === height of nav - height of above SerratedRectangle */}
       <div className="relative z-0 flex h-[54px] items-start">
@@ -106,7 +106,7 @@ function SerratedRectangle({
   return (
     <div className={cn("grid h-2.5 ", className)}>
       <div
-        className={cn("h-[5px] w-full", dark ? "bg-green" : "bg-green-light")}
+        className={cn("h-[5px] w-full", dark ? "bg-green-200" : "bg-green-800")}
       />
       <div className="flex w-fit justify-self-center">
         {[...Array(numberOfTriangles.default)].map((_, idx) => (
@@ -145,7 +145,7 @@ function UpsideDownTriangle({
         size === "lg" && "lg:block md:hidden",
         size === "md" && "md:block sm:hidden",
         size === "sm" && "sm:block",
-        dark ? "border-b-green" : "border-b-green-light",
+        dark ? "border-b-green-200" : "border-b-green-light-800",
       )}
     />
   );
@@ -162,7 +162,7 @@ function Navigation({
     <nav className={cn("flex h-full flex-1 basis-0 items-center", className)}>
       {links.map((link) => (
         <Fragment key={link.path}>
-          <Link href={link.path} className="text-lg font-bold text-green">
+          <Link href={link.path} className="text-green-200 text-lg font-bold">
             {link.label}
           </Link>
           <div className="px-5 last:hidden">

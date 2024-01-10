@@ -9,9 +9,12 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        green: "#3A9EA5",
-        "green-light": "#D9EEEC",
+        "green-100": "#3B9197",
+        "green-200": "#3A9EA5",
+        "green-800": "#D9EEEC",
         orange: "#DE754F",
+        "gray-100": "#BABABA",
+        "gray-500": "#454545",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -37,5 +40,8 @@ const config: Config = {
     },
   },
   plugins: [require("tailwind-scrollbar")],
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
 };
 export default config;
