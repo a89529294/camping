@@ -10,25 +10,6 @@ import { Fragment } from "react";
 
 import Link from "next/link";
 
-const leftSideLinks = [
-  {
-    label: "關於我們",
-    path: "/about",
-  },
-  {
-    label: "最新消息",
-    path: "/news",
-  },
-  {
-    label: "餐點介紹",
-    path: "/meals",
-  },
-  {
-    label: "親子設施",
-    path: "/family-friendly-amenities",
-  },
-];
-
 const rightSideLinks = [
   {
     label: "房型介紹",
@@ -59,9 +40,28 @@ const socialMedia = [
   },
 ];
 
-export default function Header() {
+export default async function Header() {
+  const leftSideLinks = [
+    {
+      label: "關於我們",
+      path: "/about",
+    },
+    {
+      label: "最新消息",
+      path: "/news",
+    },
+    {
+      label: "餐點介紹",
+      path: "/meals",
+    },
+    {
+      label: "親子設施",
+      path: "/family-friendly-amenities",
+    },
+  ];
+
   return (
-    <nav className="bg-green-800 relative z-10 h-16 ">
+    <nav className="relative z-10 h-16 bg-green-800 ">
       <SerratedRectangle dark className="relative z-10" />
       {/* 54 === height of nav - height of above SerratedRectangle */}
       <div className="relative z-0 flex h-[54px] items-start">
@@ -163,7 +163,7 @@ function Navigation({
     <nav className={cn("flex h-full flex-1 basis-0 items-center", className)}>
       {links.map((link) => (
         <Fragment key={link.path}>
-          <Link href={link.path} className="text-green-200 text-lg font-bold">
+          <Link href={link.path} className="text-lg font-bold text-green-200">
             {link.label}
           </Link>
           <div className="px-5 last:hidden xl:px-2 lg:px-1">

@@ -1,7 +1,7 @@
 "use client";
 
 import { ChevronButton } from "@/components/chevron-button";
-import { useRouteContext } from "@/components/route-context";
+import { useRouteContext } from "@/components/contexts/route-context";
 import Link from "next/link";
 
 export function NewsDetailsNavButton({

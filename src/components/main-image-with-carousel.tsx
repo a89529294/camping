@@ -6,7 +6,11 @@ import { useRef, useState } from "react";
 
 const itemWidth = 144; // 144 === 36rem === width of carousel items
 
-export function NewsDetailsCarousel({ images }: { images: StaticImageData[] }) {
+export function MainImageWithCarousel({
+  images,
+}: {
+  images: StaticImageData[];
+}) {
   const [startX, setStartX] = useState<number | undefined>(undefined);
   const [mainImgIdx, setMainImgIdx] = useState(0);
   const scrollContainerRef = useRef<HTMLDivElement>(null);

@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function AboutPage() {
   return (
-    <div className="mx-60  space-y-2.5 bg-white/70 px-7 pt-2.5">
+    <div className="mx-auto max-w-xl space-y-2.5 bg-white/70 px-7 pt-2.5">
       <PageTitle>關於我們</PageTitle>
       <div>
         <div className="bg-white p-2.5">

@@ -1,12 +1,9 @@
 "use client";
 
-import { useRouteContext } from "@/components/route-context";
+import { useRouteContext } from "@/components/contexts/route-context";
 import { AnimatePresence, motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { useLayoutEffect, useRef } from "react";
-
-// TODO fix direction, right now it only works on news details page
-// might want to disable for other pages
 
 export const AnimatePage = ({ children }: { children: React.ReactNode }) => {
   const oldPathnameRef = useRef("");
@@ -24,45 +21,48 @@ export const AnimatePage = ({ children }: { children: React.ReactNode }) => {
       lastPageRef.current = currentPageRef.current.children;
 
     exitAnimationDivRef.current?.appendChild(
-      lastPageRef.current![0].cloneNode(true),
+      lastPageRef.current?.[0]?.cloneNode(true),
     );
     lastPageRef.current = currentPageRef.current.children;
 
     return () => {
       oldPathnameRef.current = pathname;
+      console.log("in return fn", oldPathnameRef.current);
     };
   }, [pathname]);
 
+  const oldPathStartsWith =
+    oldPathnameRef.current.startsWith("/news/") ||
+    oldPathnameRef.current.startsWith("/news");
+  const duration = 0.2;
+
+  const enterInitial = (() => {
+    if (oldPathStartsWith && pathname.startsWith("/news/"))
+      return { x: dir === "rtl" ? "100%" : "-100%" };
+    return {
+      x: 0,
+      opacity: 0,
+    };
+  })();
+
+  const enterAnimation = (() => {
+    if (oldPathStartsWith && pathname.startsWith("/news/")) return { x: 0 };
+    return {
+      opacity: 1,
+      x: 0,
+    };
+  })();
+
   return (
     <AnimatePresence initial={false}>
-      <div>
-        <motion.div
-          key={pathname + "exit-animation"}
-          style={{
-            position: "absolute",
-          }}
-          initial={{ x: 0 }}
-          animate={{
-            x: dir === "rtl" ? "-100%" : "100%",
-            opacity: 0,
-          }}
-          transition={{
-            type: "linear",
-            duration: 0.2,
-          }}
-        >
-          <div ref={exitAnimationDivRef} />
-        </motion.div>
-
-        <motion.div
-          key={pathname}
-          initial={{ x: dir === "rtl" ? "100%" : "-100%" }}
-          animate={{ x: 0 }}
-          transition={{ type: "linear", duration: 0.2 }}
-        >
-          <div ref={currentPageRef}>{children}</div>
-        </motion.div>
-      </div>
+      <motion.div
+        key={pathname}
+        initial={enterInitial}
+        animate={enterAnimation}
+        transition={{ type: "linear", duration }}
+      >
+        <div ref={currentPageRef}>{children}</div>
+      </motion.div>
     </AnimatePresence>
   );
 };

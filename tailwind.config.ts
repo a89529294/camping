@@ -11,6 +11,7 @@ const config: Config = {
       colors: {
         "green-100": "#3B9197",
         "green-200": "#3A9EA5",
+        "green-300": "#ACCCCE",
         "green-800": "#D9EEEC",
         orange: "#DE754F",
         "gray-100": "#BABABA",
@@ -20,6 +21,9 @@ const config: Config = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      },
+      spacing: {
+        "4.5": "1.125rem",
       },
     },
     screens: {

@@ -8,7 +8,7 @@ import greenChevronDown from "@/assets/icons/green-chevron-down.svg";
 import Footer from "@/components/footer";
 import { PageCloseButton } from "@/components/page-close-button";
 import { cn } from "@/utils";
-import { RouteContextProvider } from "@/components/route-context";
+import { RouteContextProvider } from "@/components/contexts/route-context";
 import { AnimatePage } from "@/components/animate-page";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -39,19 +39,22 @@ export default function RootLayout({
             />
           </div>
           <Header />
-          <main className="fixed bottom-0 h-[calc(100%-176px)] w-full translate-y-0 px-36 transition  has-[button[data-visibility='hidden']]:translate-y-full has-[button[data-visibility='showButton']]:translate-y-[calc(100%-90px)] xl:has-[button[data-visibility='showButton']]:translate-y-[calc(100%-80px)] lg:has-[button[data-visibility='showButton']]:translate-y-[calc(100%-60px)] md:has-[button[data-visibility='showButton']]:translate-y-[calc(100%-45px)]">
-            <div className="bg-green-800/[0.93] relative h-full pt-16 ">
-              <PageCloseButton />
-              {/* green downward chevrons row */}
-              <div className="mx-8 flex overflow-hidden">
-                {[...Array(100)].fill("").map((_, idx) => (
-                  <Image key={idx} alt="" src={greenChevronDown} />
-                ))}
-              </div>
-              <div className="scrollbar-thumb-green-200 relative ml-8 mr-4 h-[calc(100%-5px)] overflow-y-auto pb-40 pt-5 scrollbar-thin">
-                <AnimatePage>{children}</AnimatePage>
-              </div>
+          <main
+            id="page-container"
+            className="bg-green-800/[0.93] fixed inset-x-36 bottom-0 h-[calc(100%-176px)]  translate-y-0 pt-16 transition has-[button[data-visibility='hidden']]:translate-y-full has-[button[data-visibility='showButton']]:translate-y-[calc(100%-90px)] xl:has-[button[data-visibility='showButton']]:translate-y-[calc(100%-80px)] lg:has-[button[data-visibility='showButton']]:translate-y-[calc(100%-60px)] md:has-[button[data-visibility='showButton']]:translate-y-[calc(100%-45px)]"
+          >
+            {/* <div className="bg-green-800/[0.93] relative h-full pt-16 "> */}
+            <PageCloseButton />
+            {/* green downward chevrons row */}
+            <div className="mx-8 flex overflow-hidden">
+              {[...Array(100)].fill("").map((_, idx) => (
+                <Image key={idx} alt="" src={greenChevronDown} />
+              ))}
             </div>
+            <div className="scrollbar-thumb-green-200 relative ml-8 mr-4 h-[calc(100%-5px)] overflow-y-auto pb-40 pt-5 scrollbar-thin">
+              <AnimatePage>{children}</AnimatePage>
+            </div>
+            {/* </div> */}
           </main>
           <Footer />
         </RouteContextProvider>

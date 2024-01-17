@@ -1,8 +1,7 @@
 import { newsList } from "@/app/news/temp-data";
-import { ChevronButton } from "@/components/chevron-button";
-import { NewsDetailsCarousel } from "@/components/news-details-carousel";
+import { NewsDetailsBackLink } from "@/components/news-details-back-link";
+import { MainImageWithCarousel } from "@/components/main-image-with-carousel";
 import { NewsDetailsNavButton } from "@/components/news-details-nav-button";
-import Link from "next/link";
 
 export default function NewsDetailsPage({
   params: { newsId },
@@ -16,17 +15,18 @@ export default function NewsDetailsPage({
     newsIdx === newsList.length - 1 ? newsList[0] : newsList[newsIdx + 1];
   return (
     <div className="flex items-start gap-14 pr-2">
+      <NewsDetailsBackLink />
       <div className="flex min-w-0 flex-1 items-center gap-2">
         <NewsDetailsNavButton
           newsId={prevNews?.id ?? newsList[0].id}
           dir="left"
         />
         <div className="truncate font-medium text-orange">
-          {prevNews?.title}N
+          {prevNews?.title}
         </div>
       </div>
-      <div className="max-w-[560px] bg-white p-7 ">
-        <NewsDetailsCarousel images={newsList[newsIdx].images} />
+      <div className="max-w-xl bg-white p-7 ">
+        <MainImageWithCarousel images={newsList[newsIdx].images} />
         <h1 className="mt-3 text-xl font-medium text-orange">
           {newsList[newsIdx].title}
         </h1>

@@ -5,7 +5,7 @@ import close from "@/assets/icons/x.svg";
 
 import { ButtonHTMLAttributes, DetailedHTMLProps, useState } from "react";
 import { ChevronUp } from "lucide-react";
-import { useRouteContext } from "@/components/route-context";
+import { useRouteContext } from "@/components/contexts/route-context";
 
 export function PageCloseButton() {
   const { visibility, setVisibility } = useRouteContext();
