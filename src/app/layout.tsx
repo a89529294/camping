@@ -14,7 +14,7 @@ import localFont from "next/font/local";
 
 const inter = Inter({ subsets: ["latin"] });
 const biaukai = localFont({
-  src: "../assets/fonts/biaukai.ttf",
+  src: "../../public/biaukai.ttf",
   variable: "--font-biaukai",
 });
 
