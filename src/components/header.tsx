@@ -163,7 +163,10 @@ function Navigation({
     <nav className={cn("flex h-full flex-1 basis-0 items-center", className)}>
       {links.map((link) => (
         <Fragment key={link.path}>
-          <Link href={link.path} className="text-lg font-bold text-green-200">
+          <Link
+            href={link.path}
+            className={`font-biaukai text-lg font-black text-green-200`}
+          >
             {link.label}
           </Link>
           <div className="px-5 last:hidden xl:px-2 lg:px-1">

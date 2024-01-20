@@ -12,15 +12,19 @@ import phone from "@/assets/icons/phone.svg";
 export default function Footer() {
   return (
     <footer className="pointer-events-none relative mt-auto w-full">
-      <Image alt="" src={whiteMountain} className="absolute bottom-20 -z-10" />
-      <Image alt="" src={greenArc} className="relative w-full" />
+      <Image alt="" src={whiteMountain} className="absolute bottom-16 -z-10" />
+      <Image
+        alt=""
+        src={greenArc}
+        className="relative aspect-[1440/160] w-full"
+      />
       <Trees />
 
       <div className="absolute inset-0 flex  items-end justify-between px-9 pb-6">
         <WeatherCell />
 
         <div className="flex gap-8 text-white">
-          <div className="flex gap-1">
+          <div className="font-biaukai flex gap-1">
             <Image alt="" src={mapPin} />
             南投縣埔里鎮桃米里種瓜路15-1號
           </div>

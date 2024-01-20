@@ -14,7 +14,8 @@ const config: Config = {
         "green-300": "#ACCCCE",
         "green-800": "#D9EEEC",
         orange: "#DE754F",
-        "gray-100": "#BABABA",
+        "gray-200": "#E7E7E7",
+        "gray-300": "#BABABA",
         "gray-500": "#454545",
       },
       backgroundImage: {
@@ -24,6 +25,9 @@ const config: Config = {
       },
       spacing: {
         "4.5": "1.125rem",
+      },
+      fontFamily: {
+        biaukai: ["var(--font-biaukai)"],
       },
     },
     screens: {

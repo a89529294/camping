@@ -11,7 +11,7 @@ export function PlaceholderImage(
   return (
     <div
       className={twMerge(
-        "grid aspect-[3/2] w-full place-items-center bg-gray-100",
+        "grid aspect-[3/2] w-full place-items-center bg-gray-300",
         props.className,
       )}
       {...rest}

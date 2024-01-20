@@ -14,8 +14,6 @@ export const AnimatePage = ({ children }: { children: React.ReactNode }) => {
   const { dir } = useRouteContext();
 
   useLayoutEffect(() => {
-    console.log("layout effect");
-    console.log(oldPathnameRef.current, pathname);
     if (!currentPageRef.current) return;
     if (!lastPageRef.current)
       lastPageRef.current = currentPageRef.current.children;
@@ -31,14 +29,17 @@ export const AnimatePage = ({ children }: { children: React.ReactNode }) => {
     };
   }, [pathname]);
 
-  const oldPathStartsWith =
-    oldPathnameRef.current.startsWith("/news/") ||
-    oldPathnameRef.current.startsWith("/news");
+  const useSlidingAnimation =
+    (["/news/", "/news"].some((v) => oldPathnameRef.current.startsWith(v)) &&
+      pathname.startsWith("/news/")) ||
+    (["/family-friendly-amenities/", "/family-friendly-amenities"].some((v) =>
+      oldPathnameRef.current.startsWith(v),
+    ) &&
+      pathname.startsWith("/family-friendly-amenities/"));
   const duration = 0.2;
 
   const enterInitial = (() => {
-    if (oldPathStartsWith && pathname.startsWith("/news/"))
-      return { x: dir === "rtl" ? "100%" : "-100%" };
+    if (useSlidingAnimation) return { x: dir === "rtl" ? "100%" : "-100%" };
     return {
       x: 0,
       opacity: 0,
@@ -46,7 +47,7 @@ export const AnimatePage = ({ children }: { children: React.ReactNode }) => {
   })();
 
   const enterAnimation = (() => {
-    if (oldPathStartsWith && pathname.startsWith("/news/")) return { x: 0 };
+    if (useSlidingAnimation) return { x: 0 };
     return {
       opacity: 1,
       x: 0,

@@ -10,8 +10,13 @@ import { PageCloseButton } from "@/components/page-close-button";
 import { cn } from "@/utils";
 import { RouteContextProvider } from "@/components/contexts/route-context";
 import { AnimatePage } from "@/components/animate-page";
+import localFont from "next/font/local";
 
 const inter = Inter({ subsets: ["latin"] });
+const biaukai = localFont({
+  src: "../../public/biaukai.ttf",
+  variable: "--font-biaukai",
+});
 
 export const metadata: Metadata = {
   title: "愛 聚時光",
@@ -26,7 +31,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full overflow-hidden">
       <body
-        className={cn("flex h-full flex-col overflow-hidden", inter.className)}
+        className={cn(
+          "flex h-full flex-col overflow-hidden",
+          inter.className,
+          biaukai.variable,
+        )}
       >
         <RouteContextProvider>
           {/* background image */}
@@ -41,7 +50,7 @@ export default function RootLayout({
           <Header />
           <main
             id="page-container"
-            className="bg-green-800/[0.93] fixed inset-x-36 bottom-0 h-[calc(100%-176px)]  translate-y-0 pt-16 transition has-[button[data-visibility='hidden']]:translate-y-full has-[button[data-visibility='showButton']]:translate-y-[calc(100%-90px)] xl:has-[button[data-visibility='showButton']]:translate-y-[calc(100%-80px)] lg:has-[button[data-visibility='showButton']]:translate-y-[calc(100%-60px)] md:has-[button[data-visibility='showButton']]:translate-y-[calc(100%-45px)]"
+            className="fixed inset-x-36 bottom-0 h-[calc(100%-176px)] translate-y-0  bg-green-800/[0.93] pt-16 transition has-[button[data-visibility='hidden']]:translate-y-full has-[button[data-visibility='showButton']]:translate-y-[calc(100%-90px)] xl:has-[button[data-visibility='showButton']]:translate-y-[calc(100%-80px)] lg:has-[button[data-visibility='showButton']]:translate-y-[calc(100%-60px)] md:has-[button[data-visibility='showButton']]:translate-y-[calc(100%-45px)]"
           >
             {/* <div className="bg-green-800/[0.93] relative h-full pt-16 "> */}
             <PageCloseButton />
@@ -51,7 +60,7 @@ export default function RootLayout({
                 <Image key={idx} alt="" src={greenChevronDown} />
               ))}
             </div>
-            <div className="scrollbar-thumb-green-200 relative ml-8 mr-4 h-[calc(100%-5px)] overflow-y-auto pb-40 pt-5 scrollbar-thin">
+            <div className="relative ml-8 mr-4 h-[calc(100%-5px)] overflow-y-auto pb-40 pt-5 scrollbar-thin scrollbar-thumb-green-200">
               <AnimatePage>{children}</AnimatePage>
             </div>
             {/* </div> */}
