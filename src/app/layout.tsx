@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import Image from "next/image";
 import "./globals.css";
 import bg from "@/assets/bg.jpg";
+import mobileBg from "@/assets/mobile-bg.jpg";
 import greenChevronDown from "@/assets/icons/green-chevron-down.svg";
 import Footer from "@/components/footer";
 import { PageCloseButton } from "@/components/page-close-button";
@@ -43,8 +44,13 @@ export default function RootLayout({
             <Image
               alt=""
               src={bg}
-              className="object-cover object-bottom"
+              className="object-cover object-bottom sm:hidden"
               fill
+            />
+            <Image
+              alt=""
+              src={mobileBg}
+              className="object-position-left-bottom hidden h-[calc(100dvh-90px)] w-full object-cover sm:block"
             />
           </div>
           <Header />
