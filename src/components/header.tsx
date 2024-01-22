@@ -10,6 +10,25 @@ import { Fragment } from "react";
 
 import Link from "next/link";
 
+const leftSideLinks = [
+  {
+    label: "關於我們",
+    path: "/about",
+  },
+  {
+    label: "最新消息",
+    path: "/news",
+  },
+  {
+    label: "餐點介紹",
+    path: "/meals",
+  },
+  {
+    label: "親子設施",
+    path: "/family-friendly-amenities",
+  },
+];
+
 const rightSideLinks = [
   {
     label: "房型介紹",
@@ -41,25 +60,6 @@ const socialMedia = [
 ];
 
 export default async function Header() {
-  const leftSideLinks = [
-    {
-      label: "關於我們",
-      path: "/about",
-    },
-    {
-      label: "最新消息",
-      path: "/news",
-    },
-    {
-      label: "餐點介紹",
-      path: "/meals",
-    },
-    {
-      label: "親子設施",
-      path: "/family-friendly-amenities",
-    },
-  ];
-
   return (
     <nav className="relative z-10 h-16 bg-green-800 ">
       <SerratedRectangle dark className="relative z-10" />

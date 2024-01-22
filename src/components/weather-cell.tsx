@@ -48,7 +48,8 @@ export default async function WeatherCell() {
         if (match) return value;
       }
     }
-    return dayWeatherIconMap.values().next;
+
+    return dayWeatherIconMap.values().next().value;
   })();
 
   return (
@@ -60,7 +61,7 @@ export default async function WeatherCell() {
       <div className="relative py-3.5">
         <Image alt="" src={iconSource} className="h-12 w-12 object-contain" />
       </div>
-      <div className="font-biaukai col-span-2 flex gap-1.5 text-white">
+      <div className="col-span-2 flex gap-1.5 font-biaukai text-white">
         <Image alt="" src={downArrow} />
         南投縣, 埔里鎮
       </div>
