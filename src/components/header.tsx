@@ -1,85 +1,56 @@
-import facebook from "@/assets/icons/Facebook.svg";
-import ig from "@/assets/icons/ig.svg";
-import line from "@/assets/icons/line.svg";
-import youtube from "@/assets/icons/youtube.svg";
+import { useEffect, useRef, useState } from "react";
+
 import logo from "@/assets/logo.svg";
 import star from "@/assets/star.svg";
 import { cn } from "@/utils";
 import Image from "next/image";
 import { Fragment } from "react";
 
+import { leftSideLinks, rightSideLinks, socialMedia } from "@/utils/routes";
 import Link from "next/link";
+import { MobileMenu } from "@/components/mobile-menu";
+import { usePathname } from "next/navigation";
 
-const leftSideLinks = [
-  {
-    label: "關於我們",
-    path: "/about",
-  },
-  {
-    label: "最新消息",
-    path: "/news",
-  },
-  {
-    label: "餐點介紹",
-    path: "/meals",
-  },
-  {
-    label: "親子設施",
-    path: "/family-friendly-amenities",
-  },
-];
+export function Header() {
+  const [isVisible, setIsVisible] = useState(false);
+  const pathname = usePathname();
 
-const rightSideLinks = [
-  {
-    label: "房型介紹",
-    path: "/rooms",
-  },
-  {
-    label: "聯絡我們",
-    path: "/contact",
-  },
-];
+  useEffect(() => {
+    setIsVisible(false);
+  }, [pathname]);
 
-const socialMedia = [
-  {
-    icon: line,
-    path: "https://www.google.com",
-  },
-  {
-    icon: ig,
-    path: "https://www.google.com",
-  },
-  {
-    icon: facebook,
-    path: "https://www.google.com",
-  },
-  {
-    icon: youtube,
-    path: "https://www.google.com",
-  },
-];
-
-export default async function Header() {
   return (
-    <nav className="relative z-10 h-16 bg-green-800 ">
+    <nav className="relative z-30 h-16 bg-green-800 ">
       <SerratedRectangle dark className="relative z-10" />
       {/* 54 === height of nav - height of above SerratedRectangle */}
       <div className="relative z-0 flex h-[54px] items-start">
-        <Navigation links={leftSideLinks} className="justify-end pr-12" />
+        <DesktopNavigation
+          links={leftSideLinks}
+          className="justify-end pr-12"
+        />
+
         {/* huge center LOGO */}
-        <Link href="/">
-          <Image src={logo} alt="" className="-translate-y-2.5" />
-        </Link>
-        <Navigation links={rightSideLinks} className="pl-12" />
+        {!isVisible && (
+          <Link
+            href="/"
+            className="-translate-y-2.5 sm:absolute sm:left-1/2 sm:-translate-x-1/2"
+          >
+            <Image src={logo} alt="" className="sm:h-36 sm:w-32" />
+          </Link>
+        )}
+
+        <DesktopNavigation links={rightSideLinks} className="pl-12" />
 
         {/* social medias */}
-        <div className="absolute right-10 top-1/2 flex -translate-y-1/2 gap-6 xl:gap-4 lg:gap-3">
+        <div className="absolute right-10 top-1/2 flex -translate-y-1/2 gap-6 xl:gap-4 lg:gap-3 sm:hidden">
           {socialMedia.map((socialMedia, idx) => (
             <a key={idx} href={socialMedia.path} target="_blank">
               <Image alt="" src={socialMedia.icon} />
             </a>
           ))}
         </div>
+
+        <MobileMenu isVisible={isVisible} setIsVisible={setIsVisible} />
       </div>
       <SerratedRectangle
         dark={false}
@@ -94,9 +65,10 @@ const numberOfTriangles = {
   xl: 60,
   lg: 45,
   md: 36,
-  sm: 20,
+  sm: 30,
 };
 
+// width of triangle is 16px
 function SerratedRectangle({
   dark,
   className,
@@ -105,11 +77,11 @@ function SerratedRectangle({
   className?: string;
 }) {
   return (
-    <div className={cn("grid h-2.5 ", className)}>
+    <div className={cn("grid h-2.5 overflow-hidden", className)}>
       <div
         className={cn("h-[5px] w-full", dark ? "bg-green-200" : "bg-green-800")}
       />
-      <div className="flex w-fit justify-self-center">
+      <div className="flex w-fit justify-self-center sm:overflow-hidden">
         {[...Array(numberOfTriangles.default)].map((_, idx) => (
           <UpsideDownTriangle key={idx} dark={dark} />
         ))}
@@ -140,7 +112,7 @@ function UpsideDownTriangle({
   return (
     <div
       className={cn(
-        "hidden h-0 w-0 rotate-180  border-x-8 border-b-[5px] border-x-transparent",
+        "hidden h-0 w-0 rotate-180 border-x-8 border-b-[5px] border-x-transparent",
         size === "default" && "block xl:hidden",
         size === "xl" && "xl:block lg:hidden",
         size === "lg" && "lg:block md:hidden",
@@ -152,7 +124,7 @@ function UpsideDownTriangle({
   );
 }
 
-function Navigation({
+function DesktopNavigation({
   links,
   className,
 }: {
@@ -160,7 +132,12 @@ function Navigation({
   className?: string;
 }) {
   return (
-    <nav className={cn("flex h-full flex-1 basis-0 items-center", className)}>
+    <nav
+      className={cn(
+        "flex h-full flex-1 basis-0 items-center sm:hidden",
+        className,
+      )}
+    >
       {links.map((link) => (
         <Fragment key={link.path}>
           <Link

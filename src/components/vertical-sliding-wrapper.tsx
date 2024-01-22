@@ -33,13 +33,49 @@ export function VerticalSlidingWrapper<T extends Rooms | Meals>({
   return (
     <div
       className={cn(
-        "font-biaukai relative mx-auto max-w-xl bg-white/70 pt-4.5",
+        "relative mx-auto max-w-xl bg-white/70 pt-4.5 font-biaukai sm:pt-4",
         className,
       )}
     >
+      <div className="absolute right-7 top-5 sm:static sm:mx-auto sm:mb-4 sm:w-fit">
+        <Select
+          aria-label="?"
+          selectedKey={selectedItem.id}
+          onSelectionChange={(id) => {
+            const prevItemIndex = items.data.findIndex(
+              (item) => item.id === selectedItem.id,
+            );
+            const nextMealIndex = items.data.findIndex(
+              (item) => item.id === id,
+            );
+
+            if (nextMealIndex > prevItemIndex) setAnimateDir("down");
+            else setAnimateDir("up");
+            setSelectedItem(items.data.find((item) => item.id === id)!);
+          }}
+        >
+          <Button className="flex h-7 items-center gap-1 border-[1.5px] border-green-200 bg-white/70 px-2 text-sm font-bold text-green-200">
+            <SelectValue className="" />
+            <span aria-hidden="true">▼</span>
+          </Button>
+          <Popover offset={0} placement="bottom right">
+            <ListBox>
+              {items.data.map((item) => (
+                <ListBoxItem
+                  className="flex h-10 cursor-pointer items-center justify-center border-b border-b-green-300 bg-white px-3 text-sm font-medium text-black focus:bg-green-200 focus:text-white focus:outline-none active:bg-white active:text-orange"
+                  key={item.id}
+                  id={item.id}
+                >
+                  {item.name}
+                </ListBoxItem>
+              ))}
+            </ListBox>
+          </Popover>
+        </Select>
+      </div>
       <AnimatePresence mode="popLayout" initial={false}>
         <motion.div
-          className="flex flex-col gap-10"
+          className="flex flex-col gap-10 sm:gap-6 sm:pb-10"
           key={selectedItem.id}
           initial={{ y: animateDir === "up" ? "100%" : "-100%", opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -76,42 +112,6 @@ export function VerticalSlidingWrapper<T extends Rooms | Meals>({
           )}
         </motion.div>
       </AnimatePresence>
-      <div className="absolute right-7 top-5">
-        <Select
-          aria-label="?"
-          selectedKey={selectedItem.id}
-          onSelectionChange={(id) => {
-            const prevItemIndex = items.data.findIndex(
-              (item) => item.id === selectedItem.id,
-            );
-            const nextMealIndex = items.data.findIndex(
-              (item) => item.id === id,
-            );
-
-            if (nextMealIndex > prevItemIndex) setAnimateDir("down");
-            else setAnimateDir("up");
-            setSelectedItem(items.data.find((item) => item.id === id)!);
-          }}
-        >
-          <Button className="flex h-7 items-center gap-1 border-[1.5px] border-green-200 bg-white/70 px-2 text-sm font-bold text-green-200">
-            <SelectValue className="" />
-            <span aria-hidden="true">▼</span>
-          </Button>
-          <Popover offset={0} placement="bottom right">
-            <ListBox>
-              {items.data.map((item) => (
-                <ListBoxItem
-                  className="flex h-10 cursor-pointer items-center justify-center border-b border-b-green-300 bg-white px-3 text-sm font-medium text-black focus:bg-green-200 focus:text-white focus:outline-none active:bg-white active:text-orange"
-                  key={item.id}
-                  id={item.id}
-                >
-                  {item.name}
-                </ListBoxItem>
-              ))}
-            </ListBox>
-          </Popover>
-        </Select>
-      </div>
     </div>
   );
 }
@@ -126,11 +126,11 @@ function ImageSection({
   description: string;
 }) {
   return (
-    <section className="flex flex-col gap-4  px-7">
+    <section className="flex flex-col gap-4 px-7 sm:px-0">
       <SectionTitle>{title}</SectionTitle>
       <div>
         <MainImageWithCarousel images={images} />
-        <div className="pt-4">{description}</div>
+        <div className="sm:px-13 pt-4">{description}</div>
       </div>
     </section>
   );

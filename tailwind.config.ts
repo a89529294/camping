@@ -26,12 +26,16 @@ const config: Config = {
       spacing: {
         "4.5": "1.125rem",
         "7.5": "1.875rem",
+        "13": "3.25rem",
       },
       fontFamily: {
         biaukai: ["var(--font-biaukai)"],
       },
       lineHeight: {
         4.5: "1.125rem",
+      },
+      width: {
+        "18": "4.5rem",
       },
     },
     screens: {

@@ -6,7 +6,7 @@ import { ReactNode } from "react";
 
 export default function AboutPage() {
   return (
-    <div className="font-biaukai mx-auto max-w-xl space-y-2.5 bg-white/70 px-7 pt-2.5">
+    <div className="mx-auto max-w-xl space-y-2.5 bg-white/70 px-7 pt-2.5 font-biaukai sm:pb-10">
       <SectionTitle>愛，聚時光森林露營區</SectionTitle>
       <div>
         <div className="bg-white p-2.5">
