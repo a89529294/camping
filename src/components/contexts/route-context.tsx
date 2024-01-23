@@ -43,6 +43,7 @@ export function RouteContextProvider({ children }: { children: ReactNode }) {
   const [dir, setDir] = useState<Dir>("rtl");
   const pathname = usePathname();
   const isIndex = pathname === "/";
+  const showMobileBg = pathname !== "/" && pathname !== "/contact";
 
   useEffect(() => {
     if (pathname === "/") setVisibility("hidden");
@@ -76,8 +77,8 @@ export function RouteContextProvider({ children }: { children: ReactNode }) {
         </div>
         <Header />
 
-        {/* background image on mobile non index routes */}
-        {!isIndex && (
+        {/* background image on mobile routes other than index and contact */}
+        {showMobileBg && (
           <Image
             alt=""
             src={mobileNonIndexBg}

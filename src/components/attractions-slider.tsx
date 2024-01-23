@@ -1,30 +1,15 @@
-"use client";
-
 import { PlaceholderImage } from "@/components/placeholder-image";
-import { CSSProperties, useRef } from "react";
 
 export function AttractionsSlider({
   attractions,
 }: {
   attractions: { id: string; name: string; travelTime: number }[];
 }) {
-  const containerRef = useRef<HTMLDivElement>(null);
-
   return (
-    <div
-      ref={containerRef}
-      className="flex snap-x snap-mandatory gap-2.5 overflow-x-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-green-200"
-    >
+    <div className="flex  snap-x snap-mandatory gap-2.5 overflow-x-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-green-200 sm:flex-col">
       {attractions.map((attraction) => (
         <div
-          style={
-            {
-              "--mr": containerRef.current
-                ? `${containerRef.current.clientWidth - 180}px`
-                : 0,
-            } as CSSProperties
-          }
-          className="w-44 shrink-0 snap-start space-y-2.5 pb-2.5 last:mr-[--mr]"
+          className="w-44 shrink-0 snap-start space-y-2.5 pb-2.5 last:mr-[calc(100%-180px)] sm:w-full sm:last:mr-0"
           key={attraction.id}
         >
           <PlaceholderImage />
