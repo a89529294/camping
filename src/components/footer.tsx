@@ -36,7 +36,7 @@ export default function Footer({ hide }: { hide: boolean }) {
       <Trees />
 
       <div className="absolute inset-0 flex  items-end justify-between px-9 pb-6">
-        {/* <WeatherCell /> */}
+        <WeatherCell />
 
         <div className="flex gap-8 text-white sm:hidden">
           <div className="flex gap-1 font-biaukai">

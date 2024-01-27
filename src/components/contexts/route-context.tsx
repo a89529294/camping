@@ -85,7 +85,7 @@ export function RouteContextProvider({ children }: { children: ReactNode }) {
             alt=""
             // src={mobileNonIndexBg}
             src={bg}
-            className="relative z-10 hidden aspect-[393/170] w-full object-cover object-[left_-115px] sm:block"
+            className="relative z-10 hidden aspect-[393/170] w-full object-cover object-bottom sm:block"
           />
         )}
         <main

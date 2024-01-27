@@ -6,35 +6,41 @@ import {
   nightWeatherIconMap,
 } from "@/utils/weather-icon-map";
 
-export default async function WeatherCell() {
-  const response = await fetch(
-    `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-023?Authorization=CWA-415016E5-6ED3-4C70-8A2E-05AA4C79565D&locationName=${encodeURIComponent(
-      "埔里鎮",
-    )}&elementName=Wx&elementName=T&timeFrom=${encodeURIComponent(
-      new Date(Date.now() + 0 * 60 * 60 * 1000).toISOString().slice(0, -5),
-    )}&timeTo=${encodeURIComponent(
-      new Date(Date.now() + 16 * 60 * 60 * 1000).toISOString().slice(0, -5),
-    )}`,
-    { next: { revalidate: 3600 } },
-  );
-  const data = await response.json();
+// todo right now this is imported by route-context through footer, which causes an error since
+// this is supposed to be a server component
+export default function WeatherCell() {
+  // const response = await fetch(
+  //   `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-023?Authorization=CWA-415016E5-6ED3-4C70-8A2E-05AA4C79565D&locationName=${encodeURIComponent(
+  //     "埔里鎮",
+  //   )}&elementName=Wx&elementName=T&timeFrom=${encodeURIComponent(
+  //     new Date(Date.now() + 0 * 60 * 60 * 1000).toISOString().slice(0, -5),
+  //   )}&timeTo=${encodeURIComponent(
+  //     new Date(Date.now() + 16 * 60 * 60 * 1000).toISOString().slice(0, -5),
+  //   )}`,
+  //   { next: { revalidate: 3600 } },
+  // );
+  // const data = await response.json();
+  // let temperature = 20;
+  // let wx = "多雲";
+  // let isDay = true;
+  // try {
+  //   temperature =
+  //     data.records.locations[0].location[0].weatherElement[0].time[0]
+  //       .elementValue[0].value;
+  //   wx =
+  //     data.records.locations[0].location[0].weatherElement[1].time[0]
+  //       .elementValue[0].value;
+  //   isDay =
+  //     new Date(
+  //       data.records.locations[0].location[0].weatherElement[0].time[0].startTime,
+  //     ).getHours() < 18;
+  // } catch (e) {
+  //   console.log(e);
+  // }
+
   let temperature = 20;
   let wx = "多雲";
   let isDay = true;
-  try {
-    temperature =
-      data.records.locations[0].location[0].weatherElement[0].time[0]
-        .elementValue[0].value;
-    wx =
-      data.records.locations[0].location[0].weatherElement[1].time[0]
-        .elementValue[0].value;
-    isDay =
-      new Date(
-        data.records.locations[0].location[0].weatherElement[0].time[0].startTime,
-      ).getHours() < 18;
-  } catch (e) {
-    console.log(e);
-  }
 
   const iconSource = (() => {
     if (isDay) {
