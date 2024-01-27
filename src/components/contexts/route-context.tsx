@@ -14,9 +14,10 @@ import { cn } from "@/utils";
 import { Header } from "@/components/header";
 import Footer from "@/components/footer";
 import Image from "next/image";
-import bg from "@/assets/bg.jpg";
-import mobileBg from "@/assets/mobile-bg.jpg";
-import mobileNonIndexBg from "@/assets/mobile-non-index-bg.jpg";
+// import bg from "@/assets/bg.jpg";
+// import mobileBg from "@/assets/mobile-bg.jpg";
+// import mobileNonIndexBg from "@/assets/mobile-non-index-bg.jpg";
+import bg from "@/assets/new-bg.jpg";
 import { AnimatePage } from "@/components/animate-page";
 import { PageCloseButton } from "@/components/page-close-button";
 import greenChevronDown from "@/assets/icons/green-chevron-down.svg";
@@ -70,7 +71,8 @@ export function RouteContextProvider({ children }: { children: ReactNode }) {
           {isIndex && (
             <Image
               alt=""
-              src={mobileBg}
+              // src={mobileBg}
+              src={bg}
               className="hidden h-[calc(100dvh-90px)] w-full object-cover object-[-100px_bottom] sm:block"
             />
           )}
@@ -81,7 +83,8 @@ export function RouteContextProvider({ children }: { children: ReactNode }) {
         {showMobileBg && (
           <Image
             alt=""
-            src={mobileNonIndexBg}
+            // src={mobileNonIndexBg}
+            src={bg}
             className="relative z-10 hidden aspect-[393/170] w-full object-cover object-[left_-115px] sm:block"
           />
         )}
