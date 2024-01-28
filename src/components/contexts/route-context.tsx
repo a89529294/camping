@@ -1,4 +1,5 @@
 "use client";
+import { cn } from "@/utils";
 import { usePathname } from "next/navigation";
 import {
   Dispatch,
@@ -9,18 +10,21 @@ import {
   useEffect,
   useState,
 } from "react";
-import { cn } from "@/utils";
 
 import { Header } from "@/components/header";
-import Footer from "@/components/footer";
 import Image from "next/image";
-// import bg from "@/assets/bg.jpg";
-// import mobileBg from "@/assets/mobile-bg.jpg";
-// import mobileNonIndexBg from "@/assets/mobile-non-index-bg.jpg";
-import bg from "@/assets/new-bg.jpg";
-import { AnimatePage } from "@/components/animate-page";
-import { PageCloseButton } from "@/components/page-close-button";
 import greenChevronDown from "@/assets/icons/green-chevron-down.svg";
+import bg from "@/assets/background-carousel/bg.jpg";
+import bg1 from "@/assets/background-carousel/bg-1.jpg";
+import bg2 from "@/assets/background-carousel/bg-2.jpg";
+import bg3 from "@/assets/background-carousel/bg-3.jpg";
+import bg4 from "@/assets/background-carousel/bg-4.jpg";
+import bg5 from "@/assets/background-carousel/bg-5.jpg";
+import bg6 from "@/assets/background-carousel/bg-6.jpg";
+import bg7 from "@/assets/background-carousel/bg-7.jpg";
+import bg8 from "@/assets/background-carousel/bg-8.jpg";
+import bg9 from "@/assets/background-carousel/bg-9.jpg";
+import { PageCloseButton } from "@/components/page-close-button";
 
 type Visibility = "hidden" | "showButton" | "visible";
 type Dir = "ltr" | "rtl";
@@ -34,12 +38,32 @@ type ContextValue = {
 
 const routeContext = createContext<ContextValue>({} as ContextValue);
 
-// const visibility = "visible";
-// const setVisibility = (() => {}) as any;
-// const dir = "ltr";
-// const setDir = (() => {}) as any;
+const backgroundCarouselImages = [
+  bg,
+  bg1,
+  bg2,
+  bg3,
+  bg4,
+  bg5,
+  // bg6,
+  bg7,
+  bg8,
+  bg9,
+];
 
-export function RouteContextProvider({ children }: { children: ReactNode }) {
+export function RouteContextProvider({
+  children,
+  footer,
+}: {
+  children: ReactNode;
+  footer: ReactNode;
+}) {
+  const [backgroundOneVisibility, setBackgroundOneVisibility] =
+    useState("opacity-100");
+  const [backgroundTwoVisibility, setBackgroundTwoVisibility] =
+    useState("opacity-0");
+  const [backgroundOneIndex, setBackgroundOneIndex] = useState(0);
+  const [backgroundTwoIndex, setBackgroundTwoIndex] = useState(1);
   const [visibility, setVisibility] = useState<Visibility>("hidden");
   const [dir, setDir] = useState<Dir>("rtl");
   const pathname = usePathname();
@@ -50,6 +74,19 @@ export function RouteContextProvider({ children }: { children: ReactNode }) {
     if (pathname === "/") setVisibility("hidden");
     else setVisibility("visible");
   }, [pathname]);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setBackgroundOneVisibility((pv) =>
+        pv === "opacity-100" ? "opacity-0" : "opacity-100",
+      );
+      setBackgroundTwoVisibility((pv) =>
+        pv === "opacity-100" ? "opacity-0" : "opacity-100",
+      );
+    }, 5000);
+
+    return () => clearInterval(intervalId);
+  }, []);
 
   return (
     <routeContext.Provider value={{ visibility, setVisibility, dir, setDir }}>
@@ -64,9 +101,33 @@ export function RouteContextProvider({ children }: { children: ReactNode }) {
         <div className={cn("fixed inset-0 -z-20")}>
           <Image
             alt=""
-            src={bg}
-            className="object-cover object-bottom sm:hidden"
+            src={backgroundCarouselImages[backgroundOneIndex]}
+            className={cn(
+              "object-cover object-bottom transition-opacity duration-1000 sm:hidden",
+              backgroundOneVisibility,
+            )}
             fill
+            onTransitionEnd={(e) => {
+              if (e.currentTarget.classList.contains("opacity-0"))
+                setBackgroundOneIndex(
+                  (pv) => (pv + 2) % backgroundCarouselImages.length,
+                );
+            }}
+          />
+          <Image
+            alt=""
+            src={backgroundCarouselImages[backgroundTwoIndex]}
+            className={cn(
+              "object-cover object-bottom transition-opacity duration-1000 sm:hidden",
+              backgroundTwoVisibility,
+            )}
+            fill
+            onTransitionEnd={(e) => {
+              if (e.currentTarget.classList.contains("opacity-0"))
+                setBackgroundTwoIndex(
+                  (pv) => (pv + 2) % backgroundCarouselImages.length,
+                );
+            }}
           />
           {isIndex && (
             <Image
@@ -77,7 +138,6 @@ export function RouteContextProvider({ children }: { children: ReactNode }) {
             />
           )}
         </div>
-        <Header />
 
         {/* background image on mobile routes other than index and contact */}
         {showMobileBg && (
@@ -88,9 +148,11 @@ export function RouteContextProvider({ children }: { children: ReactNode }) {
             className="relative z-10 hidden aspect-[393/170] w-full object-cover object-bottom sm:block"
           />
         )}
+        <Header />
+
         <main
           id="page-container"
-          className="fixed inset-x-36 bottom-0 h-[calc(100%-176px)] translate-y-0 bg-green-800/[0.93] pt-16 transition has-[button[data-visibility='hidden']]:translate-y-full has-[button[data-visibility='showButton']]:translate-y-[calc(100%-80px)] xl:has-[button[data-visibility='showButton']]:translate-y-[calc(100%-70px)] lg:has-[button[data-visibility='showButton']]:translate-y-[calc(100%-60px)] md:has-[button[data-visibility='showButton']]:translate-y-[calc(100%-45px)] sm:hidden"
+          className="fixed inset-x-36 bottom-0 h-[calc(100%-176px)] translate-y-0 bg-green-800/[0.93] pt-16 transition has-[button[data-visibility='hidden']]:translate-y-full has-[button[data-visibility='showButton']]:translate-y-[calc(100%-75px)] xl:has-[button[data-visibility='showButton']]:translate-y-[calc(100%-65px)] lg:has-[button[data-visibility='showButton']]:translate-y-[calc(100%-55px)] md:has-[button[data-visibility='showButton']]:translate-y-[calc(100%-45px)] sm:hidden"
         >
           <PageCloseButton />
           {/* green downward chevrons row */}
@@ -106,7 +168,7 @@ export function RouteContextProvider({ children }: { children: ReactNode }) {
         </main>
 
         <main className="hidden sm:block">{children}</main>
-        <Footer hide={!isIndex} />
+        {footer}
       </div>
     </routeContext.Provider>
   );

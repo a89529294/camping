@@ -42,7 +42,7 @@ export function Header() {
         <DesktopNavigation links={rightSideLinks} className="pl-12" />
 
         {/* social medias */}
-        <div className="absolute right-10 top-1/2 flex -translate-y-1/2 gap-6 xl:gap-4 lg:gap-3 sm:hidden">
+        <div className="absolute right-10 top-1/2 flex -translate-y-1/2 gap-6 xl:gap-4 lg:hidden">
           {socialMedia.map((socialMedia, idx) => (
             <a key={idx} href={socialMedia.path} target="_blank">
               <Image alt="" src={socialMedia.icon} />

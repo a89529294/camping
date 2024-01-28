@@ -1,15 +1,11 @@
-import Footer from "@/components/footer";
+import { Footer } from "@/components/footer";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Image from "next/image";
 import "./globals.css";
-import bg from "@/assets/bg.jpg";
-import mobileBg from "@/assets/mobile-bg.jpg";
-import greenChevronDown from "@/assets/icons/green-chevron-down.svg";
-import { PageCloseButton } from "@/components/page-close-button";
-import { cn } from "@/utils";
+
 import { RouteContextProvider } from "@/components/contexts/route-context";
-import { AnimatePage } from "@/components/animate-page";
+import { WeatherCell } from "@/components/weather-cell";
+import { cn } from "@/utils";
 import localFont from "next/font/local";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -31,8 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full">
       <body className={cn("h-full", inter.className, biaukai.variable)}>
-        <RouteContextProvider>
-          {/* <Pathname>{children}</Pathname> */}
+        <RouteContextProvider footer={<Footer weatherCell={<WeatherCell />} />}>
           {children}
         </RouteContextProvider>
       </body>
