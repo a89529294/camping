@@ -33,7 +33,7 @@ export function VerticalSlidingWrapper<T extends Rooms | Meals>({
   return (
     <div
       className={cn(
-        "relative mx-auto max-w-xl bg-white/70 pt-4.5 font-biaukai sm:pt-4",
+        "relative mx-auto max-w-xl bg-white/70 pt-4.5 sm:pt-4",
         className,
       )}
     >
@@ -130,7 +130,7 @@ function ImageSection({
       <SectionTitle>{title}</SectionTitle>
       <div>
         <MainImageWithCarousel images={images} />
-        <div className="sm:px-13 pt-4">{description}</div>
+        <div className="pt-4 sm:px-13">{description}</div>
       </div>
     </section>
   );

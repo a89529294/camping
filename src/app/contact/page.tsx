@@ -101,7 +101,7 @@ export default function ContactPage() {
 
 function Section({ children, title }: { children: ReactNode; title: string }) {
   return (
-    <div className="space-y-2.5 font-biaukai">
+    <div className="space-y-2.5 ">
       <SectionTitle>{title}</SectionTitle>
       <div className="bg-white">{children}</div>
     </div>

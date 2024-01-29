@@ -11,7 +11,7 @@ export function AdaptiveGrid({
   path: string;
 }) {
   return (
-    <div className="mx-16 grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-7 pt-2.5 font-biaukai sm:mx-0 sm:bg-green-800 sm:px-12 sm:pb-10 sm:pt-8">
+    <div className="mx-16 grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-7 pt-2.5 sm:mx-0 sm:bg-green-800 sm:px-12 sm:pb-10 sm:pt-8">
       {items.map((item) => (
         <div key={item.id} className="">
           <PlaceholderImage />

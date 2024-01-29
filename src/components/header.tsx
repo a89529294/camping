@@ -142,7 +142,7 @@ function DesktopNavigation({
         <Fragment key={link.path}>
           <Link
             href={link.path}
-            className={`font-biaukai text-lg font-black text-green-200`}
+            className={` text-lg font-black text-green-200`}
           >
             {link.label}
           </Link>

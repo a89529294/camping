@@ -44,7 +44,7 @@ export function Footer({ weatherCell }: { weatherCell: ReactNode }) {
         {weatherCell}
 
         <div className="flex gap-8 text-white sm:hidden">
-          <div className="flex gap-1 font-biaukai">
+          <div className="flex gap-1">
             <Image alt="" src={mapPin} />
             南投縣埔里鎮桃米里種瓜路15-1號
           </div>

@@ -97,6 +97,8 @@ export function RouteContextProvider({
           isIndex ? "" : "sm:min-h-full sm:overflow-auto",
         )}
       >
+        <Header />
+
         {/* background image on desktop and mobile index */}
         <div className={cn("fixed inset-0 -z-20")}>
           <Image
@@ -148,7 +150,6 @@ export function RouteContextProvider({
             className="relative z-10 hidden aspect-[393/170] w-full object-cover object-bottom sm:block"
           />
         )}
-        <Header />
 
         <main
           id="page-container"

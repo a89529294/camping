@@ -65,7 +65,7 @@ export async function WeatherCell() {
       <div className="relative py-2 lg:py-0">
         <Image alt="" src={iconSource} className="h-12 w-12 object-contain" />
       </div>
-      <div className="col-span-2 flex gap-1.5 font-biaukai text-white">
+      <div className="col-span-2 flex gap-1.5 text-white">
         <Image alt="" src={downArrow} />
         南投縣, 埔里鎮
       </div>

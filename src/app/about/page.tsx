@@ -6,7 +6,7 @@ import { ReactNode } from "react";
 
 export default function AboutPage() {
   return (
-    <div className="mx-auto max-w-xl space-y-2.5 bg-white/70 px-7 pt-2.5 font-biaukai sm:pb-10">
+    <div className="mx-auto max-w-xl space-y-2.5 bg-white/70 px-7 pt-2.5 sm:pb-10">
       <SectionTitle>愛，聚時光森林露營區</SectionTitle>
       <div>
         <div className="bg-white p-2.5">
@@ -22,7 +22,7 @@ export default function AboutPage() {
           <p className="mb-5">
             <StandoutText>鳥鳴</StandoutText>響徹大山群，樹下靜夜露一宿
           </p>
-          <p>
+          <p className="leading-relaxed">
             <StandoutText2>愛</StandoutText2>
             ，聚時光森林露營區將於2024/01/01正式開放試營運！！
             於2023/10/01起接手「外寓露營區」，承蒙前外寓露營區營主用心維護大自然的森林環境，種植了近200棵台灣肖楠樹讓整個營區被大樹環抱著，使愛聚時光團隊可以將最自然的環境呈現給喜好露營的朋友們。
@@ -39,7 +39,9 @@ export default function AboutPage() {
 }
 
 function StandoutText({ children }: { children: ReactNode }) {
-  return <em className="text-3xl not-italic leading-[30px]">{children}</em>;
+  return (
+    <em className="pr-1 text-3xl not-italic leading-[30px]">{children}</em>
+  );
 }
 
 function StandoutText2({ children }: { children: ReactNode }) {

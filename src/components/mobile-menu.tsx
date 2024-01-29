@@ -32,7 +32,7 @@ export function MobileMenu({
   return (
     <div className="absolute right-3.5 top-1/2 hidden -translate-y-1/2 items-center sm:flex">
       <button onClick={() => setIsVisible(!isVisible)}>
-        <div className="w-7.5 flex flex-col gap-1">
+        <div className="flex w-7.5 flex-col gap-1">
           <div className="border-b-2 border-green-200" />
           <div className="border-b-2 border-green-200" />
           <div className="border-b-2 border-green-200" />
@@ -55,7 +55,7 @@ export function MobileMenu({
                     {links.map((link, idx) => (
                       <div key={idx} className="w-18">
                         <Link
-                          className="font-biaukai text-lg font-medium text-white"
+                          className="text-lg font-medium text-white"
                           href={link.path}
                           onClick={() => {
                             pathname === link.path && setIsVisible(false);

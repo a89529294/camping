@@ -25,7 +25,7 @@ export function AdaptiveGridItemDetails({
   const nextItem =
     itemIndex === items.length - 1 ? items[0] : items[itemIndex + 1];
   return (
-    <div className="flex items-start gap-14 pr-2 font-biaukai sm:block sm:gap-0 sm:pr-0">
+    <div className="flex items-start gap-14 pr-2 sm:block sm:gap-0 sm:pr-0">
       <AdaptiveGridItemDetailsBackLink path={path} />
       <DesktopNav
         path={path}
@@ -60,9 +60,9 @@ export function AdaptiveGridItemDetails({
           {items[itemIndex].title}
         </h1>
         {items[itemIndex].date && (
-          <h2 className="sm:px-13 text-green-100">{items[itemIndex].date}</h2>
+          <h2 className="text-green-100 sm:px-13">{items[itemIndex].date}</h2>
         )}
-        <p className="sm:px-13 mt-5 text-gray-500 sm:mt-2.5">
+        <p className="mt-5 text-gray-500 sm:mt-2.5 sm:px-13">
           {items[itemIndex].content}
         </p>
       </div>
