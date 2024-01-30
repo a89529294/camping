@@ -4,19 +4,27 @@ import { twMerge } from "tailwind-merge";
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
 export function PlaceholderImage(
-  props: DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>,
+  props: DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> & {
+    imageSrc?: string;
+  },
 ) {
   const { className, ...rest } = props;
 
   return (
     <div
       className={twMerge(
-        "grid aspect-[3/2] w-full place-items-center bg-gray-300",
+        "relative grid aspect-[3/2] w-full place-items-center bg-gray-300",
         props.className,
       )}
       {...rest}
     >
-      <Image alt="" src={imagePlaceholder} draggable={false} />
+      <Image
+        alt=""
+        src={props.imageSrc ?? imagePlaceholder}
+        draggable={false}
+        fill
+        objectFit="cover"
+      />
     </div>
   );
 }
