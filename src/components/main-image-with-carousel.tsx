@@ -9,7 +9,7 @@ const itemWidth = 144; // 144 === 36rem === width of carousel items
 export function MainImageWithCarousel({
   images,
 }: {
-  images: StaticImageData[];
+  images: (string | StaticImageData)[];
 }) {
   const [startX, setStartX] = useState<number | undefined>(undefined);
   const [mainImgIdx, setMainImgIdx] = useState(0);
@@ -76,11 +76,14 @@ export function MainImageWithCarousel({
           <div className="w-10" />
         )}
 
-        <Image
-          alt=""
-          src={images[mainImgIdx]}
-          className="aspect-[3/2] object-cover sm:min-w-0 sm:flex-1"
-        />
+        <div className="relative aspect-[3/2] sm:min-w-0 sm:flex-1">
+          <Image
+            alt=""
+            src={images[mainImgIdx]}
+            className=" object-cover "
+            fill
+          />
+        </div>
 
         {images.length > 1 ? (
           <ChevronButton

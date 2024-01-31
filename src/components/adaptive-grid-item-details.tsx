@@ -12,7 +12,7 @@ export function AdaptiveGridItemDetails({
   itemId: string;
   items: {
     id: string;
-    images: StaticImageData[];
+    images: (string | StaticImageData)[];
     title: string;
     date?: string;
     content: string;
@@ -24,6 +24,9 @@ export function AdaptiveGridItemDetails({
   const prevItem = itemIndex === 0 ? items.at(-1) : items[itemIndex - 1];
   const nextItem =
     itemIndex === items.length - 1 ? items[0] : items[itemIndex + 1];
+
+  console.log(items);
+
   return (
     <div className="flex items-start gap-14 pr-2 sm:block sm:gap-0 sm:pr-0">
       <AdaptiveGridItemDetailsBackLink path={path} />
