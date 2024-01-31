@@ -3,6 +3,7 @@ import { MainImageWithCarousel } from "@/components/main-image-with-carousel";
 import { AdaptiveGirdItemDetailsNavButton } from "@/components/adaptive-grid-item-details-nav-button";
 import { StaticImageData } from "next/image";
 import Link from "next/link";
+import { twMerge } from "tailwind-merge";
 
 export function AdaptiveGridItemDetails({
   itemId,
@@ -25,8 +26,6 @@ export function AdaptiveGridItemDetails({
   const nextItem =
     itemIndex === items.length - 1 ? items[0] : items[itemIndex + 1];
 
-  console.log(items);
-
   return (
     <div className="flex items-start gap-14 pr-2 sm:block sm:gap-0 sm:pr-0">
       <AdaptiveGridItemDetailsBackLink path={path} />
@@ -37,6 +36,7 @@ export function AdaptiveGridItemDetails({
           status: "prev",
           value: prevItem?.title ?? "",
         }}
+        prev
       />
       <div className="hidden items-center justify-between bg-green-800 px-3 py-3.5 sm:flex">
         <AdaptiveGirdItemDetailsNavButton
@@ -77,6 +77,7 @@ export function AdaptiveGridItemDetails({
           status: "next",
           value: nextItem.title,
         }}
+        next
       />
     </div>
   );
@@ -86,6 +87,8 @@ function DesktopNav({
   path,
   itemId,
   title,
+  next,
+  prev,
 }: {
   path: string;
   itemId: string;
@@ -98,9 +101,17 @@ function DesktopNav({
         status: "next";
         value: string;
       };
+  next?: boolean;
+  prev?: boolean;
 }) {
   return (
-    <div className=" flex min-w-0 flex-1 items-center justify-start gap-2 sm:hidden">
+    <div
+      className={twMerge(
+        "flex min-w-0 flex-1 items-center  gap-2 sm:hidden",
+        next && "justify-end",
+        prev && "justify-start",
+      )}
+    >
       {title.status === "next" && (
         <div className="truncate font-medium text-orange ">{title.value}</div>
       )}
