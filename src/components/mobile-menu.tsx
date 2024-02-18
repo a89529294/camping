@@ -79,7 +79,7 @@ export function MobileMenu({
                     </div>
                     <div className="flex gap-1 text-white">
                       <Image alt="" src={pin} />
-                      南投縣埔里鎮桃米里種瓜路15-1號
+                      南投縣埔里鎮種瓜路15-1號
                     </div>
                   </div>
                 </RemoveScroll>

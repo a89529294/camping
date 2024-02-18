@@ -52,7 +52,7 @@ export default function ContactPage() {
                   <span className="mr-2 font-semibold text-green-200">
                     地址
                   </span>
-                  南投縣埔里鎮桃米里種瓜路15-1號
+                  南投縣埔里鎮種瓜路15-1號
                 </p>
                 <p>
                   <span className="mr-2 font-semibold text-green-200">
