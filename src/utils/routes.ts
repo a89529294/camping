@@ -1,7 +1,11 @@
 import facebook from "@/assets/icons/Facebook.svg";
-import ig from "@/assets/icons/ig.svg";
+import facebookWhite from "@/assets/icons/Facebook-white.svg";
 import line from "@/assets/icons/line.svg";
+import lineWhite from "@/assets/icons/line-white.svg";
+import ig from "@/assets/icons/ig.svg";
+import igWhite from "@/assets/icons/ig-white.svg";
 import youtube from "@/assets/icons/youtube.svg";
+import youtubeWhite from "@/assets/icons/youtube-white.svg";
 
 export const leftSideLinks = [
   {
@@ -36,18 +40,22 @@ export const rightSideLinks = [
 export const socialMedia = [
   {
     icon: line,
+    iconWhite: lineWhite,
     path: "https://www.google.com",
   },
   {
     icon: ig,
+    iconWhite: igWhite,
     path: "https://www.google.com",
   },
   {
     icon: facebook,
+    iconWhite: facebookWhite,
     path: "https://www.google.com",
   },
   {
     icon: youtube,
+    iconWhite: youtubeWhite,
     path: "https://www.google.com",
   },
 ];

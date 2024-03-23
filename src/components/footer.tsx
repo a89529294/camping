@@ -8,6 +8,7 @@ import middleTree from "@/assets/middle-tree.png";
 import mobileGreenArc from "@/assets/mobile-footer.png";
 import rightTree from "@/assets/right-tree.png";
 import whiteMountain from "@/assets/white-mountain-opaque.png";
+import { SocialMediaLinks } from "@/components/social-media-links";
 import { cn } from "@/utils";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -26,12 +27,12 @@ export function Footer({ weatherCell }: { weatherCell: ReactNode }) {
       <Image
         alt=""
         src={whiteMountain}
-        className="absolute bottom-12 -z-10 xl:bottom-4 lg:bottom-0 sm:bottom-28"
+        className="absolute bottom-8 -z-10 h-52 xl:bottom-4 lg:bottom-0 sm:bottom-28"
       />
       <Image
         alt=""
         src={greenArc}
-        className="relative aspect-[1440/140] w-full sm:hidden"
+        className="relative aspect-[1440/100] w-full sm:hidden"
       />
       <Image
         alt=""
@@ -48,10 +49,7 @@ export function Footer({ weatherCell }: { weatherCell: ReactNode }) {
             <Image alt="" src={mapPin} />
             南投縣埔里鎮種瓜路15-1號
           </div>
-          <div className="flex gap-1">
-            <Image alt="" src={phone} />
-            0912-175-370
-          </div>
+          <SocialMediaLinks whiteStroke />
         </div>
       </div>
     </footer>

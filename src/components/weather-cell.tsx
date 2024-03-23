@@ -36,10 +36,6 @@ export async function WeatherCell() {
     console.log(e);
   }
 
-  // let temperature = 20;
-  // let wx = "多雲";
-  // let isDay = true;
-
   const iconSource = (() => {
     if (isDay) {
       for (let [key, value] of dayWeatherIconMap.entries()) {
@@ -57,12 +53,12 @@ export async function WeatherCell() {
   })();
 
   return (
-    <div className=" grid w-fit grid-cols-[auto_auto] lg:flex lg:items-end lg:gap-2">
-      <div className="text-4xl text-white">
+    <div className=" grid w-fit grid-cols-[auto_auto] lg:flex lg:items-end lg:gap-2 sm:grid">
+      <div className="pt-2 text-4xl text-white">
         {temperature}
         <sup className="top-0 align-top text-base">℃</sup>
       </div>
-      <div className="relative py-2 lg:py-0">
+      <div className="relative pt-2 lg:py-0">
         <Image alt="" src={iconSource} className="h-12 w-12 object-contain" />
       </div>
       <div className="col-span-2 flex gap-1.5 text-white">

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 import logo from "@/assets/logo.svg";
 import star from "@/assets/star.svg";
@@ -6,10 +6,11 @@ import { cn } from "@/utils";
 import Image from "next/image";
 import { Fragment } from "react";
 
+import { MobileMenu } from "@/components/mobile-menu";
 import { leftSideLinks, rightSideLinks, socialMedia } from "@/utils/routes";
 import Link from "next/link";
-import { MobileMenu } from "@/components/mobile-menu";
 import { usePathname } from "next/navigation";
+import { SocialMediaLinks } from "@/components/social-media-links";
 
 export function Header() {
   const [isVisible, setIsVisible] = useState(false);
@@ -35,20 +36,13 @@ export function Header() {
             href="/"
             className="-translate-y-2.5 sm:absolute sm:left-1/2 sm:-translate-x-1/2"
           >
-            <Image src={logo} alt="" className="sm:h-36 sm:w-32" />
+            <Image src={logo} alt="" className="h-48 w-48 sm:h-36 sm:w-32" />
           </Link>
         )}
 
         <DesktopNavigation links={rightSideLinks} className="pl-12" />
 
-        {/* social medias */}
-        <div className="absolute right-10 top-1/2 flex -translate-y-1/2 gap-6 xl:gap-4 lg:hidden">
-          {socialMedia.map((socialMedia, idx) => (
-            <a key={idx} href={socialMedia.path} target="_blank">
-              <Image alt="" src={socialMedia.icon} />
-            </a>
-          ))}
-        </div>
+        <SocialMediaLinks className="absolute right-10 top-1/2 -translate-y-1/2" />
 
         <MobileMenu isVisible={isVisible} setIsVisible={setIsVisible} />
       </div>
