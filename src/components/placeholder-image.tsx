@@ -8,7 +8,7 @@ export function PlaceholderImage(
     imageSrc?: string;
   },
 ) {
-  const { className, ...rest } = props;
+  const { className, imageSrc, ...rest } = props;
 
   return (
     <div
@@ -20,10 +20,10 @@ export function PlaceholderImage(
     >
       <Image
         alt=""
-        src={props.imageSrc ?? imagePlaceholder}
+        src={imageSrc || imagePlaceholder}
         draggable={false}
         fill
-        objectFit="cover"
+        className="object-cover"
       />
     </div>
   );

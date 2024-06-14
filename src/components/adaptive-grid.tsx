@@ -1,4 +1,5 @@
 import greenArrowRight from "@/assets/icons/green-arrow-right.svg";
+import { ProgressBarLink } from "@/components/contexts/progress-bar-context";
 import { PlaceholderImage } from "@/components/placeholder-image";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
@@ -30,13 +31,13 @@ export function AdaptiveGrid({
               {item.title}
             </div>
             <div className="mt-2 flex justify-end">
-              <Link
+              <ProgressBarLink
                 href={`/${path}/${item.id}`}
                 className="flex w-fit items-center gap-1 border-[1.5px] border-green-200  px-2 py-0.5 text-sm text-green-200 hover:bg-green-800/30 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-green-800"
               >
                 詳細資訊
                 <Image alt="" src={greenArrowRight} />
-              </Link>
+              </ProgressBarLink>
             </div>
           </div>
         </div>

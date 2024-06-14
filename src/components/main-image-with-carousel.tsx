@@ -77,12 +77,14 @@ export function MainImageWithCarousel({
         )}
 
         <div className="relative aspect-[3/2] sm:min-w-0 sm:flex-1">
-          <Image
-            alt=""
-            src={images[mainImgIdx]}
-            className=" object-cover "
-            fill
-          />
+          {images.length > 0 && (
+            <Image
+              alt=""
+              src={images[mainImgIdx]}
+              className=" object-cover "
+              fill
+            />
+          )}
         </div>
 
         {images.length > 1 ? (

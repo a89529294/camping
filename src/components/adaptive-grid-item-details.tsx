@@ -4,6 +4,7 @@ import { AdaptiveGirdItemDetailsNavButton } from "@/components/adaptive-grid-ite
 import { StaticImageData } from "next/image";
 import Link from "next/link";
 import { twMerge } from "tailwind-merge";
+import { ProgressBarLink } from "@/components/contexts/progress-bar-context";
 
 export function AdaptiveGridItemDetails({
   itemId,
@@ -44,12 +45,12 @@ export function AdaptiveGridItemDetails({
           itemId={prevItem?.id ?? items[0].id}
           dir="left"
         />
-        <Link
+        <ProgressBarLink
           href={path}
           className=" border-[1.5px] border-green-200 px-2 py-0.5 text-sm font-bold text-green-200 hover:opacity-80"
         >
           回到列表
-        </Link>
+        </ProgressBarLink>
         <AdaptiveGirdItemDetailsNavButton
           path={path}
           itemId={nextItem.id}

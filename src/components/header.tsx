@@ -11,6 +11,7 @@ import { leftSideLinks, rightSideLinks, socialMedia } from "@/utils/routes";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { SocialMediaLinks } from "@/components/social-media-links";
+import { ProgressBarLink } from "@/components/contexts/progress-bar-context";
 
 export function Header() {
   const [isVisible, setIsVisible] = useState(false);
@@ -32,12 +33,12 @@ export function Header() {
 
         {/* huge center LOGO */}
         {!isVisible && (
-          <Link
+          <ProgressBarLink
             href="/"
             className="-translate-y-2.5 sm:absolute sm:left-1/2 sm:-translate-x-1/2"
           >
             <Image src={logo} alt="" className="h-48 w-48 sm:h-36 sm:w-32" />
-          </Link>
+          </ProgressBarLink>
         )}
 
         <DesktopNavigation links={rightSideLinks} className="pl-12" />
@@ -134,12 +135,12 @@ function DesktopNavigation({
     >
       {links.map((link) => (
         <Fragment key={link.path}>
-          <Link
+          <ProgressBarLink
             href={link.path}
-            className={` text-lg font-black text-green-200`}
+            className={`text-lg font-black text-green-200`}
           >
             {link.label}
-          </Link>
+          </ProgressBarLink>
           <div className="px-5 last:hidden xl:px-2 lg:px-1">
             <Image alt="" src={star} className="lg:hidden" />
           </div>

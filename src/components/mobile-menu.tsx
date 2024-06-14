@@ -9,6 +9,7 @@ import star from "@/assets/star.svg";
 import phone from "@/assets/icons/phone.svg";
 import pin from "@/assets/icons/map-pin.svg";
 import { usePathname } from "next/navigation";
+import { ProgressBarLink } from "@/components/contexts/progress-bar-context";
 
 const links = [...leftSideLinks, ...rightSideLinks];
 
@@ -54,7 +55,7 @@ export function MobileMenu({
                   <nav>
                     {links.map((link, idx) => (
                       <div key={idx} className="w-18">
-                        <Link
+                        <ProgressBarLink
                           className="text-lg font-medium text-white"
                           href={link.path}
                           onClick={() => {
@@ -62,7 +63,7 @@ export function MobileMenu({
                           }}
                         >
                           {link.label}
-                        </Link>
+                        </ProgressBarLink>
                         {idx !== links.length - 1 && (
                           <div className="flex w-full justify-center py-5">
                             <Image alt="" src={star} />

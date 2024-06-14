@@ -1,6 +1,7 @@
 "use client";
 
 import { ChevronButton } from "@/components/chevron-button";
+import { ProgressBarLink } from "@/components/contexts/progress-bar-context";
 import { useRouteContext } from "@/components/contexts/route-context";
 import Link from "next/link";
 
@@ -16,11 +17,11 @@ export function AdaptiveGirdItemDetailsNavButton({
   const { setDir } = useRouteContext();
 
   return (
-    <Link
+    <ProgressBarLink
       href={`${path}/${itemId}`}
       onClick={() => setDir(dir === "left" ? "ltr" : "rtl")}
     >
       <ChevronButton dir={dir} className="bg-transparent" />
-    </Link>
+    </ProgressBarLink>
   );
 }
