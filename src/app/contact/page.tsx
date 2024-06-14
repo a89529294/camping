@@ -1,10 +1,9 @@
+import qrCode from "@/assets/qr-code.png";
 import { AttractionsSlider } from "@/components/attractions-slider";
-import { PlaceholderImage } from "@/components/placeholder-image";
+import { ContactForm } from "@/components/contact-form";
 import { SectionTitle } from "@/components/section-title";
 import Image from "next/image";
 import { ReactNode } from "react";
-import qrCode from "@/assets/qr-code.png";
-import { ContactForm } from "@/components/contact-form";
 
 const attractions = [
   {

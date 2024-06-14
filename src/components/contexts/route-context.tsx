@@ -25,6 +25,7 @@ import bg7 from "@/assets/background-carousel/bg-7.jpg";
 import bg8 from "@/assets/background-carousel/bg-8.jpg";
 import bg9 from "@/assets/background-carousel/bg-9.jpg";
 import { PageCloseButton } from "@/components/page-close-button";
+import { AppProgressBar as ProgressBar } from "next-nprogress-bar";
 
 type Visibility = "hidden" | "showButton" | "visible";
 type Dir = "ltr" | "rtl";
@@ -75,21 +76,27 @@ export function RouteContextProvider({
     else setVisibility("visible");
   }, [pathname]);
 
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setBackgroundOneVisibility((pv) =>
-        pv === "opacity-100" ? "opacity-0" : "opacity-100",
-      );
-      setBackgroundTwoVisibility((pv) =>
-        pv === "opacity-100" ? "opacity-0" : "opacity-100",
-      );
-    }, 5000);
+  // useEffect(() => {
+  //   const intervalId = setInterval(() => {
+  //     setBackgroundOneVisibility((pv) =>
+  //       pv === "opacity-100" ? "opacity-0" : "opacity-100",
+  //     );
+  //     setBackgroundTwoVisibility((pv) =>
+  //       pv === "opacity-100" ? "opacity-0" : "opacity-100",
+  //     );
+  //   }, 5000);
 
-    return () => clearInterval(intervalId);
-  }, []);
+  //   return () => clearInterval(intervalId);
+  // }, []);
 
   return (
     <routeContext.Provider value={{ visibility, setVisibility, dir, setDir }}>
+      <ProgressBar
+        height="4px"
+        color="#d6edea"
+        options={{ showSpinner: false }}
+        shallowRouting
+      />
       <div
         id="mobile-page-container"
         className={cn(

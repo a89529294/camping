@@ -8,7 +8,8 @@ export default async function NewsPage() {
   const newsList = data.data.map((v: any) => ({
     id: v.id.toString(),
     title: v.attributes.title,
-    images: v.attributes.images.data.map((image: any) => image.attributes.url),
+    images:
+      v.attributes.images.data?.map((image: any) => image.attributes.url) ?? [],
   }));
 
   return <AdaptiveGrid items={newsList} path="news" />;
