@@ -16,9 +16,11 @@ export function AdaptiveGrid({
         <div key={item.id} className="">
           <PlaceholderImage
             imageSrc={
-              typeof item.images[0] === "object"
-                ? item.images[0].src
-                : item.images[0].toString()
+              item.images === null
+                ? ""
+                : typeof item.images[0] === "object"
+                  ? item.images[0].src
+                  : item.images[0].toString()
             }
           />
 

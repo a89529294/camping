@@ -13,6 +13,14 @@ import { cn } from "@/utils";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { ReactNode } from "react";
+import localFont from "next/font/local";
+
+const myFont = localFont({
+  src: "../assets/Stamp.ttf",
+  display: "swap",
+});
+
+console.log(myFont.className);
 
 export function Footer({ weatherCell }: { weatherCell: ReactNode }) {
   const pathname = usePathname();
@@ -41,8 +49,24 @@ export function Footer({ weatherCell }: { weatherCell: ReactNode }) {
       />
       <Trees />
 
-      <div className="absolute inset-0 flex  items-end justify-between px-9 pb-3">
+      <div className="absolute inset-0 flex items-end justify-between px-9 pb-3">
         {weatherCell}
+        <p
+          className={cn(
+            "absolute bottom-7 left-[20%] text-xl text-purple-700 sm:bottom-12 sm:left-[40%]",
+            myFont.className,
+          )}
+        >
+          有愛環境, 幸福延續
+        </p>
+        <p
+          className={cn(
+            "absolute bottom-1 left-[22%] text-xl text-red-700 sm:bottom-5 sm:left-[50%]",
+            myFont.className,
+          )}
+        >
+          讓世界看見台灣森露之美
+        </p>
 
         <div className="flex gap-8 text-white sm:hidden">
           <div className="flex gap-1">
