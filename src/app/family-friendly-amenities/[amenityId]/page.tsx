@@ -10,7 +10,8 @@ export default async function AmenityDetailsPage({
   const response = await fetch(`${baseURL}/api/play-grounds?populate=images`);
   const data = await response.json();
 
-  const familyFriendlyAmenitiesList = data.data.map((v: any) => ({
+  const dataData = data.data ?? [];
+  const familyFriendlyAmenitiesList = dataData.map((v: any) => ({
     id: v.id.toString(),
     title: v.attributes.title,
     content: v.attributes.content,

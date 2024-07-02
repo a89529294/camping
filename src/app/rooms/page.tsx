@@ -9,7 +9,7 @@ export default async function RoomsPage() {
   );
   const rooms = await response.json();
 
-  const transformedRooms = rooms.data.map((room: any) => ({
+  const transformedRooms = (rooms.data ?? []).map((room: any) => ({
     id: room.id,
     name: room.attributes.name,
     intro: room.attributes.intro,
