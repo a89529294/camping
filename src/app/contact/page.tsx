@@ -91,7 +91,7 @@ export default function ContactPage() {
       <iframe
         loading="lazy"
         allowFullScreen
-        src="https://www.google.com/maps/embed/v1/place?q=place_id:Ej1Oby4gMTUsIFpob25nZ3VhIFJkLCBQdWxpIFRvd25zaGlwLCBOYW50b3UgQ291bnR5LCBUYWl3YW4gNTQ1IjASLgoUChIJIwwPEhHYaDQRGX0MFrSaRykQDyoUChIJ3T0icgvYaDQRERtQwOqYWEI&key=AIzaSyDFAmA8lVDx7ahmx6DeiDXa9heDqBDPPHE"
+        src={`https://www.google.com/maps/embed/v1/place?q=place_id:Ej1Oby4gMTUsIFpob25nZ3VhIFJkLCBQdWxpIFRvd25zaGlwLCBOYW50b3UgQ291bnR5LCBUYWl3YW4gNTQ1IjASLgoUChIJIwwPEhHYaDQRGX0MFrSaRykQDyoUChIJ3T0icgvYaDQRERtQwOqYWEI&key=${process.env.MAP_API_KEY}`}
         className="aspect-[480/572] w-full border-none sm:-order-1 sm:aspect-[373/393]"
       ></iframe>
     </div>

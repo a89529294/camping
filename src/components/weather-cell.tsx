@@ -8,7 +8,7 @@ import {
 
 export async function WeatherCell() {
   const response = await fetch(
-    `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-023?Authorization=CWA-415016E5-6ED3-4C70-8A2E-05AA4C79565D&locationName=${encodeURIComponent(
+    `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-023?Authorization=${process.env.OPENDATA_API_KEY}&locationName=${encodeURIComponent(
       "埔里鎮",
     )}&elementName=Wx&elementName=T&timeFrom=${encodeURIComponent(
       new Date(Date.now() + 0 * 60 * 60 * 1000).toISOString().slice(0, -5),
