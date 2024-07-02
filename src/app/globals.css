@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* .slide-down-if-button-closed:has(button[data-open="false"]) {
+  transform: translateY(calc(100% - 90px));
+} */
