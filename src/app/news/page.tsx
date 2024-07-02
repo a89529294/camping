@@ -5,7 +5,9 @@ import { baseURL } from "@/utils";
 export default async function NewsPage() {
   const response = await fetch(`${baseURL}/api/news?populate=images`);
   const data = await response.json();
-  const newsList = data.data.map((v: any) => ({
+
+  const dataData = data.data ?? [];
+  const newsList = dataData.map((v: any) => ({
     id: v.id.toString(),
     title: v.attributes.title,
     images:

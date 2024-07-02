@@ -9,13 +9,19 @@ export default async function NewsDetailsPage({
 }) {
   const response = await fetch(`${baseURL}/api/news?populate=images`);
   const data = await response.json();
-  const newsList = data.data.map((v: any) => ({
-    id: v.id.toString(),
-    title: v.attributes.title,
-    images: v.attributes.images.data.map((image: any) => image.attributes.url),
-    content: v.attributes.content,
-    date: v.attributes.startDate,
-  }));
+
+  const dataData = data.data ?? [];
+  const newsList = dataData.map((v: any) => {
+    return {
+      id: v.id.toString(),
+      title: v.attributes.title,
+      images:
+        v.attributes.images.data?.map((image: any) => image.attributes.url) ??
+        [],
+      content: v.attributes.content,
+      date: v.attributes.startDate,
+    };
+  });
 
   return (
     <AdaptiveGridItemDetails itemId={newsId} items={newsList} path="/news" />

@@ -6,14 +6,17 @@ export default async function FamilyFriendlyAmenitiesPage() {
   const response = await fetch(`${baseURL}/api/play-grounds?populate=images`);
   const data = await response.json();
 
-  const familyFriendlyAmenitiesList = data.data.map((v: any) => ({
-    id: v.id,
-    title: v.attributes.title,
-    content: v.attributes.content,
-    images: v.attributes.images.data
-      ? v.attributes.images.data.map((image: any) => image.attributes.url)
-      : null,
-  }));
+  const dataData = data.data ?? [];
+  const familyFriendlyAmenitiesList = dataData.map((v: any) => {
+    return {
+      id: v.id,
+      title: v.attributes.title,
+      content: v.attributes.content,
+      images: v.attributes.images.data
+        ? v.attributes.images.data.map((image: any) => image.attributes.url)
+        : null,
+    };
+  });
 
   return (
     <AdaptiveGrid
