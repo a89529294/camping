@@ -15,15 +15,13 @@ import { Header } from "@/components/header";
 import Image from "next/image";
 import greenChevronDown from "@/assets/icons/green-chevron-down.svg";
 import bg from "@/assets/background-carousel/bg.jpg";
-import bg1 from "@/assets/background-carousel/bg-1.jpg";
-import bg2 from "@/assets/background-carousel/bg-2.jpg";
-import bg3 from "@/assets/background-carousel/bg-3.jpg";
-import bg4 from "@/assets/background-carousel/bg-4.jpg";
-import bg5 from "@/assets/background-carousel/bg-5.jpg";
-import bg6 from "@/assets/background-carousel/bg-6.jpg";
-import bg7 from "@/assets/background-carousel/bg-7.jpg";
-import bg8 from "@/assets/background-carousel/bg-8.jpg";
-import bg9 from "@/assets/background-carousel/bg-9.jpg";
+import bg1 from "@/assets/background-carousel/bg1.jpg";
+import bg2 from "@/assets/background-carousel/bg2.jpg";
+import bg3 from "@/assets/background-carousel/bg3.jpg";
+import bg4 from "@/assets/background-carousel/bg4.jpg";
+import bg5 from "@/assets/background-carousel/bg5.jpg";
+import bg6 from "@/assets/background-carousel/bg6.jpg";
+
 import { PageCloseButton } from "@/components/page-close-button";
 
 type Visibility = "hidden" | "showButton" | "visible";
@@ -38,18 +36,7 @@ type ContextValue = {
 
 const routeContext = createContext<ContextValue>({} as ContextValue);
 
-const backgroundCarouselImages = [
-  bg,
-  bg1,
-  bg2,
-  bg3,
-  bg4,
-  bg5,
-  // bg6,
-  bg7,
-  bg8,
-  bg9,
-];
+const backgroundCarouselImages = [bg1, bg2, bg3, bg4, bg5, bg6];
 
 export function RouteContextProvider({
   children,
