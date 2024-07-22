@@ -53,7 +53,7 @@ export function Footer({ weatherCell }: { weatherCell: ReactNode }) {
         {weatherCell}
         <p
           className={cn(
-            "absolute bottom-7 left-[20%] text-xl text-purple-700 sm:bottom-12 sm:left-[40%]",
+            "absolute bottom-7 left-[20%] text-xl text-purple-700 sm:bottom-12 sm:left-[45%]",
             myFont.className,
           )}
         >
@@ -61,7 +61,7 @@ export function Footer({ weatherCell }: { weatherCell: ReactNode }) {
         </p>
         <p
           className={cn(
-            "absolute bottom-1 left-[22%] text-xl text-red-700 sm:bottom-5 sm:left-[50%]",
+            "absolute bottom-1 left-[22%] text-xl text-red-700 sm:bottom-6 sm:left-[50%] sm:text-base",
             myFont.className,
           )}
         >

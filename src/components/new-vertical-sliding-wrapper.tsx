@@ -6,8 +6,7 @@ import { MainImageWithCarousel } from "@/components/main-image-with-carousel";
 import { SectionTitle } from "@/components/section-title";
 import { cn } from "@/utils";
 import { AnimatePresence, motion } from "framer-motion";
-import { StaticImageData } from "next/image";
-import { ReactNode, useState } from "react";
+import { useState } from "react";
 import {
   Button,
   ListBox,
@@ -44,6 +43,8 @@ export function NewVerticalSlidingWrapper({
 }) {
   const [selectedItem, setSelectedItem] = useState(items[0]);
   const [animateDir, setAnimateDir] = useState<"up" | "down">("up");
+
+  if (!selectedItem) return null;
 
   return (
     <div
