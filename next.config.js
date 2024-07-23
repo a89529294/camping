@@ -5,6 +5,9 @@ const nextConfig = {
       {
         hostname: "minio-s3.caprover.credot-web.com",
       },
+      {
+        hostname: "minio-api.service.lstc.com.tw",
+      },
     ],
   },
 };
