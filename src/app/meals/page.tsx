@@ -9,6 +9,8 @@ export default async function MealsPage() {
   );
   const meals = await response.json();
 
+  console.log(meals.data);
+
   const mealsData = meals.data ?? [];
 
   const transformedMeals = mealsData.map((meal: any) => {
