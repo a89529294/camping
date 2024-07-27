@@ -7,7 +7,9 @@ import { ReactNode } from "react";
 export default function AboutPage() {
   return (
     <div className="mx-auto max-w-xl space-y-2.5 bg-white/70 px-7 pt-2.5 sm:pb-10">
-      <SectionTitle>愛，聚時光森林露營區</SectionTitle>
+      <SectionTitle className="text-[#6FBD8C]">
+        愛，聚時光森林露營區
+      </SectionTitle>
       <div>
         <div className="bg-white p-2.5">
           <p>
@@ -40,10 +42,14 @@ export default function AboutPage() {
 
 function StandoutText({ children }: { children: ReactNode }) {
   return (
-    <em className="pr-1 text-3xl not-italic leading-[30px]">{children}</em>
+    <em className="pr-1 text-3xl not-italic leading-[30px] text-[#954217]">
+      {children}
+    </em>
   );
 }
 
 function StandoutText2({ children }: { children: ReactNode }) {
-  return <em className="text-4xl not-italic leading-8">{children}</em>;
+  return (
+    <em className="text-4xl not-italic leading-8 text-[#954217]">{children}</em>
+  );
 }

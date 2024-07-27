@@ -1,17 +1,12 @@
-import { rooms } from "@/app/rooms/temp-room-data";
 import { NewVerticalSlidingWrapper } from "@/components/new-vertical-sliding-wrapper";
-import { VerticalSlidingWrapper } from "@/components/vertical-sliding-wrapper";
 import { baseURL } from "@/utils";
 
 export default async function RoomsPage() {
-  const response = await fetch(`${baseURL}/api/room-collections`);
-  // const response = await fetch(
-  //   `https://api.service.lstc.com.tw/api/room-collections`,
-  // );
+  const response = await fetch(
+    `${baseURL}/api/room-collections?populate=images`,
+  );
 
   const rooms = await response.json();
-
-  console.log(rooms.attributes?.images);
 
   const transformedRooms = (rooms.data ?? []).map((room: any) => ({
     id: room.id,
@@ -22,7 +17,7 @@ export default async function RoomsPage() {
       : null,
   }));
 
-  console.log(transformedRooms);
+  // console.log(transformedRooms);
 
   return <NewVerticalSlidingWrapper items={transformedRooms} />;
 }
