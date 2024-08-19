@@ -32,6 +32,8 @@ type Room = {
   name: string;
   intro: string;
   images: string[] | null;
+  notice: string;
+  holidayJudgment: string;
 };
 
 export function NewVerticalSlidingWrapper({
@@ -83,12 +85,18 @@ export function NewVerticalSlidingWrapper({
               <div className="space-y-10 px-7">
                 {[
                   { title: "帳內設備", content: "內文" },
-                  { title: "住宿須知", content: "內文" },
-                  { title: "平/假日判定", content: "內文" },
+                  { title: "住宿須知", content: selectedItem.notice },
+                  {
+                    title: "平/假日判定",
+                    content: selectedItem.holidayJudgment,
+                  },
                 ].map((paragraph) => (
                   <div key={paragraph.title} className="space-y-2.5">
                     <SectionTitle>{paragraph.title}</SectionTitle>
-                    <p className="bg-white p-2.5">{paragraph.content}</p>
+                    <p
+                      className="bg-white p-2.5"
+                      dangerouslySetInnerHTML={{ __html: paragraph.content }}
+                    ></p>
                   </div>
                 ))}
               </div>
