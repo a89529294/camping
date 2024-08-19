@@ -15,9 +15,9 @@ export default async function RoomsPage() {
     images: room.attributes?.images?.data
       ? room.attributes.images.data.map((image: any) => image.attributes.url)
       : null,
+    notice: room.attributes.notice,
+    holidayJudgment: room.attributes.holidayJudgment,
   }));
-
-  // console.log(transformedRooms);
 
   return <NewVerticalSlidingWrapper items={transformedRooms} />;
 }
