@@ -85,7 +85,7 @@ export function NewVerticalSlidingWrapper({
               />
               <div className="space-y-10 px-7">
                 {[
-                  { title: "帳內設備", content: selectedItem.equipment },
+                  // { title: "帳內設備", content: selectedItem.equipment },
                   { title: "住宿須知", content: selectedItem.notice },
                   {
                     title: "平/假日判定",
@@ -96,7 +96,9 @@ export function NewVerticalSlidingWrapper({
                     <SectionTitle>{paragraph.title}</SectionTitle>
                     <div
                       className="bg-white p-2.5"
-                      dangerouslySetInnerHTML={{ __html: paragraph.content || '無' }}
+                      dangerouslySetInnerHTML={{
+                        __html: paragraph.content || "無",
+                      }}
                     ></div>
                   </div>
                 ))}
