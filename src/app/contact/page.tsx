@@ -4,27 +4,112 @@ import { ContactForm } from "@/components/contact-form";
 import { SectionTitle } from "@/components/section-title";
 import Image from "next/image";
 import { ReactNode } from "react";
+import nina from "@/assets/attractions/nina_choco.png";
+import paperDome from "@/assets/attractions/paper_dome.jpg";
+import sunMoonLake from "@/assets/attractions/sun_moon_lake.jpeg";
+import kiln from "@/assets/attractions/kiln.jpeg";
+import chocoFactory from "@/assets/attractions/choco_factory.jpeg";
+import puliBrewery from "@/assets/attractions/puli_brewery.jpeg";
+import puliEarthMotherTemple from "@/assets/attractions/puli_earth_mother_temple.jpeg";
+import succulentsDIY from "@/assets/attractions/succulents_diy.jpeg";
+import twGeoCenterSlab from "@/assets/attractions/tw_geo_center_slab.jpeg";
+import cingjing from "@/assets/attractions/cingjing.jpeg";
+import coffeeManor from "@/assets/attractions/coffee_manor.jpeg";
+import barbaricCoffee from "@/assets/attractions/barbaric_coffee.jpeg";
+import snakeKiln from "@/assets/attractions/snake_kiln.jpeg";
+import zhushanZinanPalace from "@/assets/attractions/zhushan_zinan_palace.jpeg";
+import shuiliChechengSightseeingStation from "@/assets/attractions/shuili_checheng_sightseeing_station.jpeg";
 
 const attractions = [
   {
     id: "1",
-    name: "台北101",
-    travelTime: 30,
+    name: "妮娜巧克力夢想城堡",
+    travelTime: 8,
+    imageSrc: nina,
   },
   {
     id: "2",
-    name: "太魯閣",
-    travelTime: 60,
+    name: "紙教堂",
+    travelTime: 8,
+    imageSrc: paperDome,
   },
   {
     id: "3",
-    name: "日月潭",
-    travelTime: 45,
+    name: "日月潭國家風景區",
+    travelTime: 27,
+    imageSrc: sunMoonLake,
   },
   {
     id: "4",
-    name: "阿里山",
-    travelTime: 100,
+    name: "親手窯陶藝DIY園區",
+    travelTime: 17,
+    imageSrc: kiln,
+  },
+  {
+    id: "5",
+    name: "18度C巧克力工坊",
+    travelTime: 21,
+    imageSrc: chocoFactory,
+  },
+  {
+    id: "6",
+    name: "埔里觀光酒廠",
+    travelTime: 18,
+    imageSrc: puliBrewery,
+  },
+  {
+    id: "7",
+    name: "埔里地母廟",
+    travelTime: 25,
+    imageSrc: puliEarthMotherTemple,
+  },
+  {
+    id: "8",
+    name: "山城多肉植物DIY",
+    travelTime: 21,
+    imageSrc: succulentsDIY,
+  },
+  {
+    id: "9",
+    name: "台灣地理中心碑",
+    travelTime: 22,
+    imageSrc: twGeoCenterSlab,
+  },
+  {
+    id: "10",
+    name: "清境農場",
+    travelTime: 73,
+    imageSrc: cingjing,
+  },
+  {
+    id: "11",
+    name: "鹿篙景觀咖啡莊園",
+    travelTime: 21,
+    imageSrc: coffeeManor,
+  },
+  {
+    id: "12",
+    name: "蠻荒咖啡",
+    travelTime: 18,
+    imageSrc: barbaricCoffee,
+  },
+  {
+    id: "13",
+    name: "水里陶藝蛇窯",
+    travelTime: 44,
+    imageSrc: snakeKiln,
+  },
+  {
+    id: "14",
+    name: "水里車埕觀光車站",
+    travelTime: 36,
+    imageSrc: shuiliChechengSightseeingStation,
+  },
+  {
+    id: "58",
+    name: "竹山紫南宮",
+    travelTime: 58,
+    imageSrc: zhushanZinanPalace,
   },
 ];
 
@@ -34,7 +119,18 @@ export default function ContactPage() {
       <div className="space-y-10 sm:space-y-6 sm:px-10">
         <Section title="交通方式">
           <div className="p-2.5">
-            內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文內文
+            <p className="mb-1 text-lg text-red-500">自行開車路線</p>
+            <p>
+              國道6號下「愛蘭交流道」→往「日月潭」方向→行經「國立暨南大學」後全家便利商店右轉→往「妮娜巧克力夢想城堡」方向→行經「桑心咖啡網美餐廳」後右轉→岔路往右邊方向(上山路段開始皆有營區指示路牌)→行經「景上景民宿」後右轉→行經「草湳濕地農場」岔路右轉順行即可抵達「「愛聚時光露營區」」。
+            </p>
+
+            <p className="mb-1 mt-2 text-lg text-red-500">
+              大眾交通路線:《埔里免費接駁
+            </p>
+            <p>
+              台鐵&高鐵皆於「台中站」下車後→轉乘「南投客運6670台灣好行觀光巴士」→至「埔里遊客中心」或「埔里轉運站」等待即可。
+            </p>
+            <p>*如需接駁請務必於入住前與我們聯繫，避免讓您等待太久。</p>
           </div>
         </Section>
         <Section title="周邊景點">
