@@ -1,7 +1,7 @@
 "use client";
 
 // import { Meal, Meals } from "@/app/meals/temp-meal-data";
-
+import Image, { StaticImageData } from "next/image";
 import { MainImageWithCarousel } from "@/components/main-image-with-carousel";
 import { SectionTitle } from "@/components/section-title";
 import { cn } from "@/utils";
@@ -15,6 +15,7 @@ import {
   Select,
   SelectValue,
 } from "react-aria-components";
+import { ImageSection } from "@/components/image-section";
 
 type Meal = {
   id: number;
@@ -72,8 +73,9 @@ export function NewVerticalSlidingWrapper({
               <ImageSection
                 key={section.title}
                 title={section.title}
-                images={section.images ?? []}
+                images={section.images}
                 description={section.content}
+                displayAllImages
               />
             ))
           ) : (
@@ -142,25 +144,5 @@ export function NewVerticalSlidingWrapper({
         </Select>
       </div>
     </div>
-  );
-}
-
-function ImageSection({
-  title,
-  images,
-  description,
-}: {
-  title: string;
-  images: string[];
-  description: string;
-}) {
-  return (
-    <section className="flex flex-col gap-4 px-7 sm:px-0">
-      <SectionTitle>{title}</SectionTitle>
-      <div>
-        <MainImageWithCarousel images={images} />
-        <div className="pt-4 sm:px-13">{description}</div>
-      </div>
-    </section>
   );
 }

@@ -140,7 +140,10 @@ export function RouteContextProvider({
 
         <main
           id="page-container"
-          className="fixed inset-x-36 bottom-0 h-[calc(100%-176px)] translate-y-0 bg-green-800/[0.93] pt-16 transition has-[button[data-visibility='hidden']]:translate-y-full has-[button[data-visibility='showButton']]:translate-y-[calc(100%-75px)] xl:has-[button[data-visibility='showButton']]:translate-y-[calc(100%-65px)] lg:has-[button[data-visibility='showButton']]:translate-y-[calc(100%-55px)] md:has-[button[data-visibility='showButton']]:translate-y-[calc(100%-45px)] sm:hidden"
+          className={cn(
+            "fixed inset-x-36 bottom-0 h-[calc(100%-176px)] translate-y-0 bg-green-800/[0.93] pt-16 transition has-[button[data-visibility='hidden']]:translate-y-full has-[button[data-visibility='showButton']]:translate-y-[calc(100%-75px)] xl:has-[button[data-visibility='showButton']]:translate-y-[calc(100%-65px)] lg:has-[button[data-visibility='showButton']]:translate-y-[calc(100%-55px)] md:has-[button[data-visibility='showButton']]:translate-y-[calc(100%-45px)] sm:hidden",
+            pathname === "/meals" && "inset-x-72",
+          )}
         >
           <PageCloseButton />
           {/* green downward chevrons row */}

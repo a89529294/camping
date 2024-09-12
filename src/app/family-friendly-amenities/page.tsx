@@ -22,6 +22,7 @@ export default async function FamilyFriendlyAmenitiesPage() {
     <AdaptiveGrid
       items={familyFriendlyAmenitiesList}
       path="family-friendly-amenities"
+      showDetails
     />
   );
 }

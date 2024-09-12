@@ -1,3 +1,4 @@
+import { AdaptiveGrid } from "@/components/adaptive-grid";
 import { NewVerticalSlidingWrapper } from "@/components/new-vertical-sliding-wrapper";
 import { baseURL } from "@/utils";
 
@@ -10,16 +11,14 @@ export default async function RoomsPage() {
 
   const transformedRooms = (rooms.data ?? []).map((room: any) => ({
     id: room.id,
-    name: room.attributes.name,
-    intro: room.attributes.intro,
+    title: room.attributes.name,
     images: room.attributes?.images?.data
       ? room.attributes.images.data.map((image: any) => image.attributes.url)
       : null,
-    notice: room.attributes.notice,
-    holidayJudgment: room.attributes.holidayJudgment,
   }));
 
-  return <NewVerticalSlidingWrapper items={transformedRooms} />;
+  // return <NewVerticalSlidingWrapper items={transformedRooms} />;
+  return <AdaptiveGrid items={transformedRooms} path="rooms" />;
 }
 
 export const dynamic = "force-dynamic";

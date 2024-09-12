@@ -12,6 +12,7 @@ export default async function NewsPage() {
     title: v.attributes.title,
     images:
       v.attributes.images.data?.map((image: any) => image.attributes.url) ?? [],
+    updatedAt: v.attributes.updatedAt,
   }));
 
   return <AdaptiveGrid items={newsList} path="news" />;

@@ -161,18 +161,18 @@ export default function ContactPage() {
                   0912-175-370
                 </p>
                 <div className="border-b-green-2 border-b" />
-                <div className="flex justify-between">
+                <div className="flex justify-between gap-1">
                   <div>
                     <span className="mr-2 font-semibold text-orange">
                       Check In
                     </span>
-                    15:30
+                    15:00
                   </div>
                   <div>
                     <span className="mr-2 font-semibold text-orange">
                       Check Out
                     </span>
-                    12:00
+                    11:00
                   </div>
                 </div>
               </div>
