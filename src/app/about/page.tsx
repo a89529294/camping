@@ -11,7 +11,7 @@ export default function AboutPage() {
         愛，聚時光森林露營區
       </SectionTitle>
       <div>
-        <div className="bg-white p-2.5">
+        <div className=" p-2.5">
           <p>
             <StandoutText>隱身</StandoutText>綿延山峰中，鳥語鳴叫花木叢
           </p>

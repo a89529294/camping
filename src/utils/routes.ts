@@ -17,19 +17,19 @@ export const leftSideLinks = [
     path: "/news",
   },
   {
-    label: "餐點介紹",
-    path: "/meals",
+    label: "房型介紹",
+    path: "/rooms",
   },
   {
-    label: "親子設施",
+    label: "親子⁄公共設施",
     path: "/family-friendly-amenities",
   },
 ];
 
 export const rightSideLinks = [
   {
-    label: "房型介紹",
-    path: "/rooms",
+    label: "餐點介紹",
+    path: "/meals",
   },
   {
     label: "聯絡我們",
@@ -41,21 +41,21 @@ export const socialMedia = [
   {
     icon: line,
     iconWhite: lineWhite,
-    path: "https://www.google.com",
+    path: "https://lin.ee/2qIRX8y",
   },
   {
     icon: ig,
     iconWhite: igWhite,
-    path: "https://www.google.com",
+    path: "https://www.instagram.com/ig_time.camping.puli?igsh=MTVvMmM2OGJ3ajk4aQ==",
   },
   {
     icon: facebook,
     iconWhite: facebookWhite,
-    path: "https://www.google.com",
+    path: "https://www.facebook.com/profile.php?id=61555263774686&mibextid=LQQJ4d",
   },
-  {
-    icon: youtube,
-    iconWhite: youtubeWhite,
-    path: "https://www.google.com",
-  },
+  // {
+  //   icon: youtube,
+  //   iconWhite: youtubeWhite,
+  //   path: "https://www.google.com",
+  // },
 ];
